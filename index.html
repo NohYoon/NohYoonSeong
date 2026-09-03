@@ -5,18 +5,30 @@
 <meta name="viewport" content="width=device-width, initial-scale=1" />
 <title>NohYoon Seong — CV</title>
 <meta name="description" content="NohYoon Seong — CV / Curriculum Vitae" />
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@0,9..144,400;0,9..144,600;1,9..144,500&family=Public+Sans:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 <link rel="stylesheet" href="style.css" />
 </head>
 <body>
+<div class="grain" aria-hidden="true"></div>
+
 <header class="page-header">
-  <div class="header-main">
-    <h1 id="name"></h1>
-    <p class="affiliation" id="affiliation"></p>
+  <div class="header-top">
+    <img id="photo" class="photo" alt="Portrait of NohYoon Seong" />
+    <div class="header-main">
+      <p class="kicker">Curriculum Vitae</p>
+      <h1 id="name"></h1>
+      <p class="affiliation" id="affiliation"></p>
+    </div>
   </div>
-  <div class="header-contact">
+  <div class="header-contact" id="header-contact">
     <p id="address"></p>
-    <p><a id="email" href="#"></a></p>
-    <p id="phone"></p>
+    <p class="contact-links">
+      <a id="email" href="#"></a>
+      <span id="phone"></span>
+      <a id="scholar" href="#" target="_blank" rel="noopener">Google Scholar ↗</a>
+    </p>
   </div>
   <button id="lang-toggle" class="lang-toggle" type="button"></button>
 </header>

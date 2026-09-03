@@ -47,10 +47,12 @@ function render() {
   document.getElementById("name").textContent = PROFILE.name;
   document.getElementById("affiliation").textContent = PROFILE.affiliation;
   document.getElementById("address").textContent = PROFILE.address;
+  document.getElementById("photo").src = PROFILE.photo;
   const emailLink = document.getElementById("email");
   emailLink.textContent = PROFILE.email;
   emailLink.href = "mailto:" + PROFILE.email;
   document.getElementById("phone").textContent = PROFILE.phone;
+  document.getElementById("scholar").href = PROFILE.scholar;
 
   const main = document.getElementById("main");
   main.innerHTML = "";

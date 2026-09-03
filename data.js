@@ -42,6 +42,8 @@ const PROFILE = {
   address: "160, Yeoksam-ro, Gangnam-gu, Seoul, Republic of Korea",
   email: "nyseong94@gmail.com",
   phone: "+82-10-4542-4525",
+  scholar: "https://scholar.google.com/citations?user=m7w57hoAAAAJ&hl=ko",
+  photo: "assets/photo.png",
   summary: {
     en: ["Management Information System (MIS)", "Machine Learning and Deep Learning for Business and Finance"],
     kr: ["경영정보시스템(MIS)", "비즈니스·금융을 위한 머신러닝 및 딥러닝"],
@@ -84,7 +86,7 @@ const EXPERIENCE = [
     },
   },
   {
-    period: "Oct. 2021 ~",
+    period: "Oct. 2021 ~ Oct. 2022",
     role: { en: "AI Programmer", kr: "AI 프로그래머" },
     org: "Basbai",
     location: "Seoul",
