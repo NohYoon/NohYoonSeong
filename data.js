@@ -39,7 +39,6 @@ const UI = {
 const PROFILE = {
   name: "NohYoon Seong",
   affiliation: "A.I.mtory",
-  address: "160, Yeoksam-ro, Gangnam-gu, Seoul, Republic of Korea",
   email: "nyseong94@gmail.com",
   phone: "+82-10-4542-4525",
   scholar: "https://scholar.google.com/citations?user=m7w57hoAAAAJ&hl=ko",

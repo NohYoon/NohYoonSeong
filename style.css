@@ -113,7 +113,6 @@ body {
 .contact-links { display: flex; flex-wrap: wrap; gap: 0.4em 1em; }
 .header-contact a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); }
 .header-contact a:hover { color: var(--accent); border-color: var(--accent); }
-#address { font-family: "IBM Plex Mono", monospace; font-size: 0.78rem; }
 
 .lang-toggle {
   position: absolute;
