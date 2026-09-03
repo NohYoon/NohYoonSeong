@@ -13,12 +13,24 @@ function el(tag, opts = {}, children = []) {
   return node;
 }
 
-function entryDetails(entry) {
-  const summary = el("summary", { class: "entry-summary" }, [
-    el("span", { class: "entry-period", text: entry.period }),
-    el("span", { class: "entry-role", text: t(entry.role) }),
-    el("span", { class: "entry-org", text: entry.org }),
+function roleOrgLine(role, org) {
+  const span = el("span", { class: "entry-roleorg" });
+  span.appendChild(el("strong", { text: role }));
+  span.appendChild(document.createTextNode(", "));
+  span.appendChild(el("em", { text: org }));
+  return span;
+}
+
+function entrySummary(period, role, org) {
+  return el("summary", { class: "entry-summary" }, [
+    el("span", { class: "entry-period", text: period }),
+    roleOrgLine(role, org),
+    el("span", { class: "disclosure", text: "▾" }),
   ]);
+}
+
+function entryDetails(entry) {
+  const summary = entrySummary(entry.period, t(entry.role), entry.org);
   const body = el("div", { class: "entry-body" });
   if (entry.orgNote) body.appendChild(el("p", { class: "entry-orgnote", text: entry.orgNote }));
   if (entry.location) body.appendChild(el("p", { class: "entry-location", text: entry.location }));
@@ -31,7 +43,8 @@ function entryDetails(entry) {
 
 function chapter(id, titleKey, contentNode, openByDefault = false) {
   const label = el("span", { class: "chapter-label", text: UI[lang][titleKey] });
-  const summary = el("summary", { class: "chapter-summary" }, [label]);
+  const disclosure = el("span", { class: "disclosure", text: "▾" });
+  const summary = el("summary", { class: "chapter-summary" }, [label, disclosure]);
   const details = el("details", { class: "chapter", open: openByDefault }, [summary, contentNode]);
   details.id = id;
   return details;
@@ -128,11 +141,7 @@ function render() {
   // Education
   const eduBody = el("div", { class: "chapter-content" });
   EDUCATION.forEach((e) => {
-    const summary = el("summary", { class: "entry-summary" }, [
-      el("span", { class: "entry-period", text: e.period }),
-      el("span", { class: "entry-role", text: t(e.degree) }),
-      el("span", { class: "entry-org", text: e.org }),
-    ]);
+    const summary = entrySummary(e.period, t(e.degree), e.org);
     const body = el("div", { class: "entry-body" });
     if (e.location) body.appendChild(el("p", { class: "entry-location", text: e.location }));
     eduBody.appendChild(el("details", { class: "entry" }, [summary, body]));
