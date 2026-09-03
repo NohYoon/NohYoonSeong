@@ -251,7 +251,7 @@ const PROJECTS = [
 const EDUCATION = [
   {
     period: "2017.02 – 2022.02",
-    degree: { en: "Ph.D. Candidate of Management Information Systems", kr: "경영정보시스템 박사과정 수료" },
+    degree: { en: "Ph.D. in Management Information Systems", kr: "경영정보시스템 박사" },
     org: "Management Information Science, KAIST College of Business",
     location: "Seoul",
   },
