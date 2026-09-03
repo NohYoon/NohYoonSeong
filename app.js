@@ -30,14 +30,63 @@ function entryDetails(entry) {
 }
 
 function chapter(id, titleKey, contentNode, openByDefault = false) {
-  const summary = el("summary", { class: "chapter-summary", text: UI[lang][titleKey] });
-  return el("details", { class: "chapter", open: openByDefault }, [summary, contentNode]);
+  const label = el("span", { class: "chapter-label", text: UI[lang][titleKey] });
+  const summary = el("summary", { class: "chapter-summary" }, [label]);
+  const details = el("details", { class: "chapter", open: openByDefault }, [summary, contentNode]);
+  details.id = id;
+  return details;
+}
+
+function escapeHtml(s) {
+  return s.replace(/&/g, "&amp;").replace(/</g, "&lt;").replace(/>/g, "&gt;");
+}
+
+// Highlights the CV owner's name wherever it appears in a citation, in either casing used in the source data.
+function boldName(text) {
+  return escapeHtml(text).replace(/NohYoon Seong|Nohyoon Seong/g, "<strong>$&</strong>");
 }
 
 function citationList(items) {
   const ul = el("ul", { class: "citation-list" });
-  items.forEach((c) => ul.appendChild(el("li", { text: c })));
+  items.forEach((c) => {
+    const li = document.createElement("li");
+    li.innerHTML = boldName(c);
+    ul.appendChild(li);
+  });
   return ul;
+}
+
+const NAV_ORDER = ["profile", "skills", "experience", "projects", "education", "conferences", "publications", "services"];
+let sectionObserver;
+
+function renderNav() {
+  const nav = document.getElementById("section-nav");
+  nav.innerHTML = "";
+  NAV_ORDER.forEach((id) => {
+    const a = document.createElement("a");
+    a.href = "#" + id;
+    a.textContent = UI[lang][id];
+    a.dataset.navFor = id;
+    nav.appendChild(a);
+  });
+}
+
+function setupScrollspy() {
+  if (sectionObserver) sectionObserver.disconnect();
+  const links = document.querySelectorAll("#section-nav a");
+  sectionObserver = new IntersectionObserver(
+    (entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        links.forEach((l) => l.classList.toggle("active", l.dataset.navFor === entry.target.id));
+      });
+    },
+    { rootMargin: "-15% 0px -70% 0px" }
+  );
+  NAV_ORDER.forEach((id) => {
+    const section = document.getElementById(id);
+    if (section) sectionObserver.observe(section);
+  });
 }
 
 function render() {
@@ -107,6 +156,9 @@ function render() {
 
   // Services
   main.appendChild(chapter("services", "services", el("ul", { class: "plain-list" }, SERVICES.map((s) => el("li", { text: s })))));
+
+  renderNav();
+  setupScrollspy();
 }
 
 document.getElementById("lang-toggle").addEventListener("click", () => {
