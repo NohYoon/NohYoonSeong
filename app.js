@@ -95,7 +95,6 @@ function render() {
   document.getElementById("lang-en").classList.toggle("active", lang === "en");
 
   document.getElementById("name").textContent = PROFILE.name;
-  document.getElementById("affiliation").textContent = PROFILE.affiliation;
   document.getElementById("photo").src = PROFILE.photo;
   const emailLink = document.getElementById("email");
   emailLink.textContent = PROFILE.email;

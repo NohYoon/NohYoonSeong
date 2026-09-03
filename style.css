@@ -26,7 +26,7 @@
 
 * { box-sizing: border-box; }
 
-html { scroll-behavior: smooth; }
+html { scroll-behavior: smooth; font-size: 18px; }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
 
 ::selection { background: var(--accent); color: var(--card); }
@@ -105,15 +105,6 @@ body {
   font-size: clamp(2.1rem, 5vw, 2.9rem);
   letter-spacing: -0.01em;
   line-height: 1.05;
-}
-
-.affiliation {
-  margin: 0;
-  font-family: "Fraunces", serif;
-  font-style: italic;
-  font-weight: 500;
-  color: var(--muted);
-  font-size: 1.05rem;
 }
 
 .header-contact {
