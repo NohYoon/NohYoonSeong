@@ -60,7 +60,7 @@ const NAV_ORDER = ["profile", "skills", "experience", "projects", "education", "
 let sectionObserver;
 
 function renderNav() {
-  const nav = document.getElementById("section-nav");
+  const nav = document.getElementById("section-nav-inner");
   nav.innerHTML = "";
   NAV_ORDER.forEach((id) => {
     const a = document.createElement("a");
@@ -91,7 +91,8 @@ function setupScrollspy() {
 
 function render() {
   document.documentElement.lang = lang === "kr" ? "ko" : "en";
-  document.getElementById("lang-toggle").textContent = UI[lang].langToggle;
+  document.getElementById("lang-kr").classList.toggle("active", lang === "kr");
+  document.getElementById("lang-en").classList.toggle("active", lang === "en");
 
   document.getElementById("name").textContent = PROFILE.name;
   document.getElementById("affiliation").textContent = PROFILE.affiliation;
@@ -161,10 +162,30 @@ function render() {
   setupScrollspy();
 }
 
-document.getElementById("lang-toggle").addEventListener("click", () => {
-  lang = lang === "en" ? "kr" : "en";
-  localStorage.setItem("lang", lang);
-  render();
+document.querySelectorAll(".lang-option").forEach((btn) => {
+  btn.addEventListener("click", () => {
+    if (btn.dataset.lang === lang) return;
+    lang = btn.dataset.lang;
+    localStorage.setItem("lang", lang);
+    render();
+  });
+});
+
+document.getElementById("export-pdf").addEventListener("click", () => {
+  const openDetails = [...document.querySelectorAll("details:not([open])")];
+  openDetails.forEach((d) => d.setAttribute("data-was-closed", ""));
+  document.querySelectorAll("details").forEach((d) => (d.open = true));
+  window.print();
+  window.addEventListener(
+    "afterprint",
+    () => {
+      document.querySelectorAll("details[data-was-closed]").forEach((d) => {
+        d.open = false;
+        d.removeAttribute("data-was-closed");
+      });
+    },
+    { once: true }
+  );
 });
 
 render();

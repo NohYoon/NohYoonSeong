@@ -1,7 +1,6 @@
 // All CV content lives here. Add/edit entries and both UI languages update.
 const UI = {
   en: {
-    langToggle: "한국어",
     profile: "Professional Profile",
     skills: "Skills",
     experience: "Work Experience",
@@ -18,7 +17,6 @@ const UI = {
     notes: "(a) alphabetically ordered (equally contributed) · (c) corresponding author · (f) first author · * equal contribution",
   },
   kr: {
-    langToggle: "English",
     profile: "소개",
     skills: "보유 역량",
     experience: "경력",

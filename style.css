@@ -68,6 +68,15 @@ body {
   gap: 1.5rem;
 }
 
+.header-controls {
+  margin-left: auto;
+  align-self: flex-start;
+  display: flex;
+  align-items: center;
+  gap: 0.6em;
+  flex-shrink: 0;
+}
+
 .photo {
   width: 108px;
   height: 132px;
@@ -117,33 +126,55 @@ body {
 .header-contact a { color: var(--muted); text-decoration: none; border-bottom: 1px solid var(--border); }
 .header-contact a:hover { color: var(--accent); border-color: var(--accent); }
 
-.lang-toggle {
-  position: absolute;
-  top: 4rem;
-  right: 1.5rem;
+.pdf-btn {
   background: var(--card);
   border: 1px solid var(--fg);
   color: var(--fg);
-  padding: 0.45em 1em;
+  padding: 0.5em 0.9em;
   font-family: "IBM Plex Mono", monospace;
-  font-size: 0.78rem;
+  font-size: 0.72rem;
+  letter-spacing: 0.03em;
+  cursor: pointer;
+  transition: background 0.15s ease, color 0.15s ease;
+  white-space: nowrap;
+}
+.pdf-btn:hover { background: var(--accent); border-color: var(--accent); color: var(--card); }
+
+.lang-switch {
+  display: flex;
+  border: 1px solid var(--fg);
+  overflow: hidden;
+}
+.lang-option {
+  background: var(--card);
+  border: none;
+  color: var(--muted);
+  padding: 0.5em 0.85em;
+  font-family: "IBM Plex Mono", monospace;
+  font-size: 0.72rem;
   letter-spacing: 0.03em;
   cursor: pointer;
   transition: background 0.15s ease, color 0.15s ease;
 }
-.lang-toggle:hover { background: var(--accent); border-color: var(--accent); color: var(--card); }
+.lang-option + .lang-option { border-left: 1px solid var(--fg); }
+.lang-option:hover { color: var(--fg); }
+.lang-option.active { background: var(--fg); color: var(--bg); }
 
 .section-nav {
   position: sticky;
   top: 0;
   z-index: 2;
+  background: var(--bg);
+  border-bottom: 1px solid var(--border);
+  backdrop-filter: blur(6px);
+}
+.section-nav-inner {
+  max-width: 760px;
+  margin: 0 auto;
   display: flex;
   gap: 1.4em;
   overflow-x: auto;
   padding: 0.9em 1.5rem;
-  background: var(--bg);
-  border-bottom: 1px solid var(--border);
-  backdrop-filter: blur(6px);
 }
 .section-nav a {
   flex-shrink: 0;
@@ -309,10 +340,20 @@ details[open] > .entry-summary::after { transform: translateY(-50%) rotate(180de
 
 @media (max-width: 560px) {
   .header-top { flex-direction: column; align-items: flex-start; gap: 1rem; }
+  .header-controls { margin-left: 0; align-self: stretch; justify-content: space-between; }
   .photo { width: 84px; height: 102px; }
   .entry-summary { grid-template-columns: 1fr; padding-right: 1.6em; }
   .entry-role, .entry-org { grid-column: 1; }
   .entry-period { white-space: normal; }
   .entry-body { padding-left: 0; padding-right: 1.6em; }
-  .lang-toggle { position: static; margin-top: 1.25em; }
+}
+
+@media print {
+  .grain, .section-nav, .header-controls, .lang-switch, .pdf-btn { display: none !important; }
+  html { scroll-behavior: auto; }
+  body { background: #fff; color: #000; }
+  .page-header { border-bottom-color: #000; }
+  .chapter-summary::after, .entry-summary::after { display: none; }
+  details.chapter, details.entry { break-inside: avoid; }
+  a { color: #000; }
 }
