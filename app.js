@@ -112,7 +112,6 @@ function render() {
   const emailLink = document.getElementById("email");
   emailLink.textContent = PROFILE.email;
   emailLink.href = "mailto:" + PROFILE.email;
-  document.getElementById("phone").textContent = PROFILE.phone;
   document.getElementById("scholar").href = PROFILE.scholar;
 
   const main = document.getElementById("main");

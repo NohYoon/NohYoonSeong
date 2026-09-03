@@ -37,7 +37,6 @@ const UI = {
 const PROFILE = {
   name: "NohYoon Seong",
   email: "nyseong94@gmail.com",
-  phone: "+82-10-4542-4525",
   scholar: "https://scholar.google.com/citations?user=m7w57hoAAAAJ&hl=ko",
   photo: "assets/photo.png",
   summary: {
