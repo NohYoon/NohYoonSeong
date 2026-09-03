@@ -37,6 +37,18 @@ function entryDetails(entry) {
   const ul = el("ul", { class: "entry-bullets" });
   entry.bullets.forEach((b) => ul.appendChild(el("li", { text: t(b) })));
   body.appendChild(ul);
+  if (entry.projectList) {
+    body.appendChild(el("p", { class: "entry-subheading", text: UI[lang].selectedProjects }));
+    const pl = el("ul", { class: "entry-bullets project-list" });
+    entry.projectList.forEach((p) => {
+      const li = document.createElement("li");
+      li.appendChild(el("strong", { text: p.org }));
+      li.appendChild(document.createTextNode(" — " + t(p.name) + " "));
+      li.appendChild(el("span", { class: "project-period", text: "(" + p.period + ")" }));
+      pl.appendChild(li);
+    });
+    body.appendChild(pl);
+  }
   if (entry.note) body.appendChild(el("p", { class: "entry-note", text: t(entry.note) }));
   return el("details", { class: "entry" }, [summary, body]);
 }

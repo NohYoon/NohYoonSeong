@@ -14,6 +14,7 @@ const UI = {
     intlJournal: "International Journal (SCI & SCIE & SSCI)",
     domJournal: "Domestic Journal (KCI)",
     workingPapers: "Working Papers",
+    selectedProjects: "Selected Projects",
     notes: "(a) alphabetically ordered (equally contributed) · (c) corresponding author · (f) first author · * equal contribution",
   },
   kr: {
@@ -30,6 +31,7 @@ const UI = {
     intlJournal: "국제 저널 (SCI & SCIE & SSCI)",
     domJournal: "국내 저널 (KCI)",
     workingPapers: "작업 중인 논문",
+    selectedProjects: "주요 프로젝트",
     notes: "(a) 알파벳 순 (균등 기여) · (c) 교신저자 · (f) 제1저자 · * 균등 기여",
   },
 };
@@ -58,10 +60,63 @@ const EXPERIENCE = [
     org: "A.I.mtory",
     location: "Seoul",
     bullets: [{ en: "AI for Smart Factory", kr: "스마트팩토리를 위한 AI" }],
-    note: {
-      en: "Detail to be added.",
-      kr: "상세 내용 추가 예정.",
-    },
+    projectList: [
+      {
+        org: "리스크컨설팅코리아",
+        name: { en: "News interpretation: information classification & summarization", kr: "뉴스해석: 정보 분류 및 요약" },
+        period: "Jan. 2026 ~",
+      },
+      {
+        org: "동화엔텍",
+        name: { en: "Quote (estimate) information extraction", kr: "견적서 정보 추출" },
+        period: "Dec. 2025 ~",
+      },
+      {
+        org: "동화엔텍",
+        name: { en: "Consulting", kr: "컨설팅" },
+        period: "Oct. 2024 ~ Dec. 2024",
+      },
+      {
+        org: "SG글로벌 신동사업장",
+        name: { en: "Vision inspection system", kr: "비전검사기" },
+        period: "Oct. 2024 ~ Nov. 2024 (subscription from Oct. 2025)",
+      },
+      {
+        org: "LS ITC",
+        name: { en: "LQC", kr: "LQC" },
+        period: "May. 2024 ~ Sep. 2024",
+      },
+      {
+        org: "KM&I",
+        name: { en: "Vision system", kr: "비전시스템" },
+        period: "Dec. 2023 ~ Jun. 2024 (subscription from Feb. 2025)",
+      },
+      {
+        org: "KM&I 창원공장",
+        name: { en: "Consulting", kr: "컨설팅 (창원공장)" },
+        period: "Oct. 2023 ~ Dec. 2023",
+      },
+      {
+        org: "교보정보통신",
+        name: { en: "Advisory retainer", kr: "자문" },
+        period: "Jun. 2023 ~ Dec. 2023",
+      },
+      {
+        org: "주식회사 유명",
+        name: { en: "병석 컨설팅", kr: "병석 컨설팅" },
+        period: "Mar. 2023",
+      },
+      {
+        org: "현대엔지비",
+        name: { en: "Hyundai vehicle robot condition-based monitoring (CBM)", kr: "현차 로봇 CBM" },
+        period: "Jan. 2023 ~ Nov. 2023",
+      },
+      {
+        org: "LS일렉트릭",
+        name: { en: "Robot process optimization", kr: "로봇 공정 최적화" },
+        period: "Oct. 2022 ~ Jan. 2023",
+      },
+    ],
   },
   {
     period: "Feb. 2023 ~",
