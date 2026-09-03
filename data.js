@@ -54,6 +54,17 @@ const SKILLS = {
 // Each entry: period, role {en,kr}, org, location, bullets {en,kr}[]
 const EXPERIENCE = [
   {
+    period: "Feb. 2022 ~",
+    role: { en: "CEO", kr: "대표(CEO)" },
+    org: "A.I.mtory",
+    location: "Seoul",
+    bullets: [{ en: "AI for Smart Factory", kr: "스마트팩토리를 위한 AI" }],
+    note: {
+      en: "Detail to be added.",
+      kr: "상세 내용 추가 예정.",
+    },
+  },
+  {
     period: "Feb. 2023 ~",
     role: { en: "Instructor", kr: "강사" },
     org: "Korea National Open University",
@@ -69,17 +80,6 @@ const EXPERIENCE = [
       { en: "Management Information Systems", kr: "경영정보시스템" },
       { en: "Programming Language and Data Science", kr: "프로그래밍 언어 및 데이터 과학" },
     ],
-  },
-  {
-    period: "Feb. 2022 ~",
-    role: { en: "CEO", kr: "대표(CEO)" },
-    org: "A.I.mtory",
-    location: "Seoul",
-    bullets: [{ en: "AI for Smart Factory", kr: "스마트팩토리를 위한 AI" }],
-    note: {
-      en: "Detail to be added.",
-      kr: "상세 내용 추가 예정.",
-    },
   },
   {
     period: "Oct. 2021 ~ Oct. 2022",
@@ -300,9 +300,6 @@ const PUBLICATIONS = {
     "NohYoon Seong, KiHwan Nam. (2021). “Predicting stock movements based on financial news and market segmentation.” Expert Systems with Applications, 164, 113988 (f)",
     "KiHwan Nam, NohYoon Seong. (2021). “A Study on Influencing Factors for Customer Satisfaction and the Continuing Use of Social Network Services in Financial Industry.” Enterprise Information Systems, 15(3), 395–419 (c)",
     "KiHwan Nam, NohYoon Seong. (2019). “Financial news-based stock price prediction using causality analysis of influence in the Korean stock market.” Decision Support Systems, 117, 100–112 (c)",
-    "NohYoon Seong, Youngchan Hwang, JooYoung Kim, Keongtae Kim, Sunil Mithas. (2023) “Balancing Expertise: How Equity Crowdfunding and Investor Composition Affect Startup Performance.” MIS Quarterly, Major Revision (f)",
-    "NohYoon Seong, Kanghyun Cho, KiHwan Nam. “Beyond Persuasion: Communication Style as a Buffer Against Market Volatility in Inclusive Decentralized Fundraising.” Journal of Business Research, Major Revision (c)",
-    "KiHwan Nam, Wonseok Oh, NohYoon Seong. “Frame of Mind: A Validation of Attraction Effects in Recommender Systems Through a Randomized Field Experiment.” Production and Operations Management, Major Revision (a)",
   ],
   domJournal: [
     "NohYoon Seong, KiHwan Nam. (2019). “Predicting stock movements based on financial news with systematic group identification.” Journal of Intelligence and Information Systems, 25(3), 1–17 (f)",
@@ -311,6 +308,9 @@ const PUBLICATIONS = {
     "NohYoon Seong, KiHwan Nam. (2017) “Combining macro-economical effects with sentiment analysis for stock index prediction.” Entrue Journal of Information Technology, 16(2), 41–54 (f)",
   ],
   workingPapers: [
+    "NohYoon Seong, Youngchan Hwang, JooYoung Kim, Keongtae Kim, Sunil Mithas. (2023) “Balancing Expertise: How Equity Crowdfunding and Investor Composition Affect Startup Performance.” MIS Quarterly, Major Revision (f)",
+    "NohYoon Seong, Kanghyun Cho, KiHwan Nam. “Beyond Persuasion: Communication Style as a Buffer Against Market Volatility in Inclusive Decentralized Fundraising.” Journal of Business Research, Major Revision (c)",
+    "KiHwan Nam, Wonseok Oh, NohYoon Seong. “Frame of Mind: A Validation of Attraction Effects in Recommender Systems Through a Randomized Field Experiment.” Production and Operations Management, Major Revision (a)",
     "SangMyung Lee, NohYoon Seong. “Existence and Time Trend of Psychological Barrier in Bitcoin Market: Evidence from US, Europe, Hong Kong.” (c)",
     "Jooyoung Kim, NohYoon Seong, Kihwan Nam. “Better than Humans? AI challenge in Creative Tasks: Randomized Field Experiment on AI Recommender Systems.”",
     "NohYoon Seong, KiHwan Nam. “Predicting stock movements based on financial news with systematic group identification.” (f)",
