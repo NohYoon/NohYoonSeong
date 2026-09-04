@@ -67,24 +67,25 @@ const EXPERIENCE = [
     bullets: [{ en: "AI for Smart Factory", kr: "스마트팩토리를 위한 AI" }],
     projectList: [
       {
-        org: "리스크컨설팅코리아",
+        org: { en: "Risk Consulting Korea", kr: "리스크컨설팅코리아" },
         name: { en: "News interpretation: information classification & summarization", kr: "뉴스해석: 정보 분류 및 요약" },
         period: "Jan. 2026 ~",
       },
       {
-        org: "동화엔텍",
+        org: { en: "Donghwa Entec", kr: "동화엔텍" },
         name: { en: "Quote (estimate) information extraction", kr: "견적서 정보 추출" },
         period: "Dec. 2025 ~",
       },
       {
-        org: "동화엔텍",
+        org: { en: "Donghwa Entec", kr: "동화엔텍" },
         name: { en: "Consulting", kr: "컨설팅" },
         period: "Oct. 2024 ~ Dec. 2024",
       },
       {
-        org: "SG글로벌 신동사업장",
+        org: { en: "SG Global (Sindong Plant)", kr: "SG글로벌 신동사업장" },
         name: { en: "Vision inspection system", kr: "비전검사기" },
-        period: "Oct. 2024 ~ Nov. 2024 (subscription from Oct. 2025)",
+        period: "Oct. 2024 ~ Nov. 2024",
+        note: { en: "subscription from Oct. 2025", kr: "2025년 10월부터 구독 중" },
       },
       {
         org: "LS ITC",
@@ -94,25 +95,26 @@ const EXPERIENCE = [
       {
         org: "KM&I",
         name: { en: "Vision system", kr: "비전시스템" },
-        period: "Dec. 2023 ~ Jun. 2024 (subscription from Feb. 2025)",
+        period: "Dec. 2023 ~ Jun. 2024",
+        note: { en: "subscription from Feb. 2025", kr: "2025년 2월부터 구독 중" },
       },
       {
-        org: "KM&I 창원공장",
+        org: { en: "KM&I (Changwon Plant)", kr: "KM&I 창원공장" },
         name: { en: "Consulting", kr: "컨설팅 (창원공장)" },
         period: "Oct. 2023 ~ Dec. 2023",
       },
       {
-        org: "교보정보통신",
+        org: { en: "Kyobo Information & Communication", kr: "교보정보통신" },
         name: { en: "Advisory retainer", kr: "자문" },
         period: "Jun. 2023 ~ Dec. 2023",
       },
       {
-        org: "현대엔지비",
+        org: { en: "Hyundai NGV", kr: "현대엔지비" },
         name: { en: "Hyundai vehicle robot condition-based monitoring (CBM)", kr: "현차 로봇 CBM" },
         period: "Jan. 2023 ~ Nov. 2023",
       },
       {
-        org: "LS일렉트릭",
+        org: { en: "LS Electric", kr: "LS일렉트릭" },
         name: { en: "Robot process optimization", kr: "로봇 공정 최적화" },
         period: "Oct. 2022 ~ Jan. 2023",
       },
@@ -121,14 +123,14 @@ const EXPERIENCE = [
   {
     period: "Feb. 2023 ~",
     role: { en: "Instructor", kr: "강사" },
-    org: "Korea National Open University",
+    org: { en: "Korea National Open University", kr: "한국방송통신대학교" },
     location: "Seoul",
     bullets: [{ en: "Computer Vision", kr: "컴퓨터 비전" }],
   },
   {
     period: "Mar. 2022 ~ Feb. 2023",
     role: { en: "Instructor", kr: "강사" },
-    org: "KyungHee University",
+    org: { en: "KyungHee University", kr: "경희대학교" },
     location: "Seoul",
     bullets: [
       { en: "Management Information Systems", kr: "경영정보시스템" },
@@ -138,7 +140,7 @@ const EXPERIENCE = [
   {
     period: "Oct. 2021 ~ Oct. 2022",
     role: { en: "AI Programmer", kr: "AI 프로그래머" },
-    org: "Basbai",
+    org: { en: "Basbai", kr: "바스바이" },
     location: "Seoul",
     bullets: [
       { en: "Computer Vision for fracture detection", kr: "골절 진단을 위한 컴퓨터 비전" },
@@ -148,14 +150,14 @@ const EXPERIENCE = [
   {
     period: "Oct. 2020 ~ Apr. 2021",
     role: { en: "AI Programmer", kr: "AI 프로그래머" },
-    org: "Fashionade",
+    org: { en: "Fashionade", kr: "패션에이드" },
     location: "Seoul",
     bullets: [{ en: "Fashion compatibility prediction with computer vision", kr: "컴퓨터 비전 기반 패션 조합 적합성 예측" }],
   },
   {
     period: "Apr. 2020 ~ Dec. 2020",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: "KB Financial Group",
+    org: { en: "KB Financial Group", kr: "KB금융그룹" },
     location: "Seoul",
     bullets: [
       { en: "Reinforcement learning for portfolio optimization", kr: "포트폴리오 최적화를 위한 강화학습" },
@@ -165,7 +167,7 @@ const EXPERIENCE = [
   {
     period: "Jan. 2020 ~ Mar. 2021",
     role: { en: "AI Programmer", kr: "AI 프로그래머" },
-    org: "Animal Industry Data Korea",
+    org: { en: "Animal Industry Data Korea", kr: "한국축산데이터" },
     location: "Seoul",
     bullets: [
       { en: "Computer Vision and Reinforcement Learning for object detection, multi-object tracking, and re-identification of livestock", kr: "가축 객체 탐지, 다중 객체 추적, 재식별을 위한 컴퓨터 비전 및 강화학습" },
@@ -175,8 +177,11 @@ const EXPERIENCE = [
   {
     period: "Oct. 2019 ~ Nov. 2019",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: "Big Data Academy Education TA & ML Project, Samsung Fire & Marine Insurance",
-    orgNote: "Kookmin University Industry-Academia Collaboration Foundation",
+    org: {
+      en: "Big Data Academy Education TA & ML Project, Samsung Fire & Marine Insurance",
+      kr: "빅데이터 아카데미 교육 조교 및 머신러닝 프로젝트, 삼성화재해상보험",
+    },
+    orgNote: { en: "Kookmin University Industry-Academia Collaboration Foundation", kr: "국민대학교 산학협력단" },
     location: "Seoul",
     bullets: [
       { en: "Deep learning for settlement amount prediction", kr: "보험금 지급액 예측 딥러닝" },
@@ -187,7 +192,7 @@ const EXPERIENCE = [
   {
     period: "Jun. ~ Sep. 2019",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: "AfreecaTV",
+    org: { en: "AfreecaTV", kr: "아프리카TV" },
     location: "Seoul",
     bullets: [
       { en: "Text mining for user chatting analysis", kr: "사용자 채팅 분석을 위한 텍스트 마이닝" },
@@ -198,8 +203,8 @@ const EXPERIENCE = [
   {
     period: "Feb. ~ Jul. 2019",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: "Recommender System, Samsung C&T – SSFMall",
-    orgNote: "Hansung University Industry-Academia Collaboration Foundation",
+    org: { en: "Recommender System, Samsung C&T – SSF SHOP", kr: "추천 시스템, 삼성물산 – SSF샵" },
+    orgNote: { en: "Hansung University Industry-Academia Collaboration Foundation", kr: "한성대학교 산학협력단" },
     location: "Seoul",
     bullets: [
       { en: "Machine Learning and Deep Learning for Personalized Recommendation", kr: "개인화 추천을 위한 머신러닝 및 딥러닝" },
@@ -209,8 +214,11 @@ const EXPERIENCE = [
   {
     period: "Oct. 2018 ~ Nov. 2018",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: "Big Data Academy Education TA & ML Project, Samsung Fire & Marine Insurance",
-    orgNote: "Kookmin University Industry-Academia Collaboration Foundation",
+    org: {
+      en: "Big Data Academy Education TA & ML Project, Samsung Fire & Marine Insurance",
+      kr: "빅데이터 아카데미 교육 조교 및 머신러닝 프로젝트, 삼성화재해상보험",
+    },
+    orgNote: { en: "Kookmin University Industry-Academia Collaboration Foundation", kr: "국민대학교 산학협력단" },
     location: "Seoul",
     bullets: [
       { en: "Deep learning survival model for Risk Consultant churn prediction", kr: "리스크 컨설턴트 이탈 예측을 위한 생존분석 딥러닝 모델" },
@@ -220,8 +228,8 @@ const EXPERIENCE = [
   {
     period: "Apr. ~ Sep. 2018",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: "Recommender System, Samsung C&T – SSFMall",
-    orgNote: "Hansung University Industry-Academia Collaboration Foundation",
+    org: { en: "Recommender System, Samsung C&T – SSF SHOP", kr: "추천 시스템, 삼성물산 – SSF샵" },
+    orgNote: { en: "Hansung University Industry-Academia Collaboration Foundation", kr: "한성대학교 산학협력단" },
     location: "Seoul",
     bullets: [
       { en: "Machine Learning and Deep Learning for Product Recommendation", kr: "상품 추천을 위한 머신러닝 및 딥러닝" },
@@ -233,7 +241,7 @@ const EXPERIENCE = [
   {
     period: "Jul. 2017 ~ Dec. 2017",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: "Sentience",
+    org: { en: "Sentience", kr: "센티언스" },
     location: "Seoul",
     bullets: [
       { en: "Web crawling", kr: "웹 크롤링" },
@@ -244,8 +252,11 @@ const EXPERIENCE = [
   {
     period: "Nov. 2017 ~ Dec. 2017",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: "Big Data Academy Education TA & ML Project, Samsung Fire & Marine Insurance",
-    orgNote: "Kookmin University Industry-Academia Collaboration Foundation",
+    org: {
+      en: "Big Data Academy Education TA & ML Project, Samsung Fire & Marine Insurance",
+      kr: "빅데이터 아카데미 교육 조교 및 머신러닝 프로젝트, 삼성화재해상보험",
+    },
+    orgNote: { en: "Kookmin University Industry-Academia Collaboration Foundation", kr: "국민대학교 산학협력단" },
     location: "Seoul",
     bullets: [
       { en: "Website revisit prediction model with LSTM on log data", kr: "로그 데이터 기반 LSTM 웹사이트 재방문 예측 모델" },
@@ -278,7 +289,7 @@ const PROJECTS = [
   {
     period: "Aug. 2018 ~ Sep. 2018",
     role: { en: "Researcher", kr: "연구원" },
-    org: "Korea Blockchain Association",
+    org: { en: "Korea Blockchain Association", kr: "한국블록체인협회" },
     bullets: [
       { en: "Analysis of employment effectiveness of blockchain technology", kr: "블록체인 기술의 고용 효과성 분석" },
       { en: "Scenario planning", kr: "시나리오 플래닝" },
@@ -288,13 +299,13 @@ const PROJECTS = [
   {
     period: "Jul. 2017 ~ Dec. 2017",
     role: { en: "Researcher", kr: "연구원" },
-    org: "NICE Investors Service",
+    org: { en: "NICE Investors Service", kr: "나이스신용평가" },
     bullets: [{ en: "An empirical study on financial market, credit infrastructure, and economic growth", kr: "금융시장·신용인프라·경제성장에 관한 실증연구" }],
   },
   {
     period: "Jul. 2017 ~ Nov. 2017",
     role: { en: "Researcher", kr: "연구원" },
-    org: "KAIST 4th Industrial Revolution Research Project",
+    org: { en: "KAIST 4th Industrial Revolution Research Project", kr: "KAIST 4차산업혁명 연구프로젝트" },
     bullets: [{ en: "Robot industry and labor markets", kr: "로봇 산업과 노동시장" }],
   },
 ];
@@ -303,7 +314,7 @@ const EDUCATION = [
   {
     period: "2017.02 – 2022.02",
     degree: { en: "Ph.D. in Management Information Systems", kr: "경영정보시스템 박사" },
-    org: "Management Information Science, KAIST College of Business",
+    org: { en: "Management Information Science, KAIST College of Business", kr: "경영정보학, KAIST 경영대학" },
     location: "Seoul",
   },
   {
@@ -315,7 +326,7 @@ const EDUCATION = [
   {
     period: "2012.02 – 2017.02",
     degree: { en: "Bachelor of Physics", kr: "물리학 학사" },
-    org: "Korea Advanced Institute of Science and Technology (KAIST)",
+    org: { en: "Korea Advanced Institute of Science and Technology (KAIST)", kr: "한국과학기술원(KAIST)" },
     location: "Daejeon",
   },
 ];
@@ -371,4 +382,8 @@ const PUBLICATIONS = {
   ],
 };
 
-const SERVICES = ["Peer Review in ICIS", "Peer Review in Decision Support Systems", "Peer Review in Journal of Intelligence and Information Systems"];
+const SERVICES = [
+  { en: "Peer Review in ICIS", kr: "ICIS 논문 심사" },
+  { en: "Peer Review in Decision Support Systems", kr: "Decision Support Systems 논문 심사" },
+  { en: "Peer Review in Journal of Intelligence and Information Systems", kr: "Journal of Intelligence and Information Systems 논문 심사" },
+];

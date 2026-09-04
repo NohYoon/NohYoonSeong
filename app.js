@@ -4,6 +4,11 @@ function t(field) {
   return typeof field === "string" ? field : field[lang];
 }
 
+const CITY_KR = { Seoul: "서울", Daejeon: "대전" };
+function cityName(city) {
+  return lang === "kr" ? CITY_KR[city] || city : city;
+}
+
 function el(tag, opts = {}, children = []) {
   const node = document.createElement(tag);
   if (opts.class) node.className = opts.class;
@@ -30,10 +35,10 @@ function entrySummary(period, role, org) {
 }
 
 function entryDetails(entry) {
-  const summary = entrySummary(entry.period, t(entry.role), entry.org);
+  const summary = entrySummary(entry.period, t(entry.role), t(entry.org));
   const body = el("div", { class: "entry-body" });
-  if (entry.orgNote) body.appendChild(el("p", { class: "entry-orgnote", text: entry.orgNote }));
-  if (entry.location) body.appendChild(el("p", { class: "entry-location", text: entry.location }));
+  if (entry.orgNote) body.appendChild(el("p", { class: "entry-orgnote", text: t(entry.orgNote) }));
+  if (entry.location) body.appendChild(el("p", { class: "entry-location", text: cityName(entry.location) }));
   const ul = el("ul", { class: "entry-bullets" });
   entry.bullets.forEach((b) => ul.appendChild(el("li", { text: t(b) })));
   body.appendChild(ul);
@@ -42,9 +47,10 @@ function entryDetails(entry) {
     const pl = el("ul", { class: "entry-bullets project-list" });
     entry.projectList.forEach((p) => {
       const li = document.createElement("li");
-      li.appendChild(el("strong", { text: p.org }));
+      const periodText = p.note ? `${p.period}, ${t(p.note)}` : p.period;
+      li.appendChild(el("strong", { text: t(p.org) }));
       li.appendChild(document.createTextNode(" — " + t(p.name) + " "));
-      li.appendChild(el("span", { class: "project-period", text: "(" + p.period + ")" }));
+      li.appendChild(el("span", { class: "project-period", text: "(" + periodText + ")" }));
       pl.appendChild(li);
     });
     body.appendChild(pl);
@@ -153,9 +159,9 @@ function render() {
   // Education
   const eduBody = el("div", { class: "chapter-content" });
   EDUCATION.forEach((e) => {
-    const summary = entrySummary(e.period, t(e.degree), e.org);
+    const summary = entrySummary(e.period, t(e.degree), t(e.org));
     const body = el("div", { class: "entry-body" });
-    if (e.location) body.appendChild(el("p", { class: "entry-location", text: e.location }));
+    if (e.location) body.appendChild(el("p", { class: "entry-location", text: cityName(e.location) }));
     eduBody.appendChild(el("details", { class: "entry" }, [summary, body]));
   });
   main.appendChild(chapter("education", "education", eduBody, true));
@@ -176,7 +182,7 @@ function render() {
   main.appendChild(chapter("publications", "publications", pubBody));
 
   // Services
-  main.appendChild(chapter("services", "services", el("ul", { class: "plain-list" }, SERVICES.map((s) => el("li", { text: s })))));
+  main.appendChild(chapter("services", "services", el("ul", { class: "plain-list" }, SERVICES.map((s) => el("li", { text: t(s) })))));
 
   renderNav();
   setupScrollspy();
