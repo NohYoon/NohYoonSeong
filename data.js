@@ -7,7 +7,7 @@ const UI = {
     profile: "Professional Profile",
     skills: "Skills",
     experience: "Work Experience",
-    projects: "Industrial Projects (DEER Lab)",
+    projects: "Industrial Projects",
     education: "Education",
     conferences: "Conferences and Presentations",
     awards: "Awards",
@@ -27,7 +27,7 @@ const UI = {
     profile: "소개",
     skills: "보유 역량",
     experience: "경력",
-    projects: "산업 프로젝트 (DEER Lab)",
+    projects: "산업 프로젝트",
     education: "학력",
     conferences: "학술발표",
     awards: "수상",
@@ -159,6 +159,19 @@ const EXPERIENCE = [
     bullets: [{ en: "Fashion compatibility prediction with computer vision", kr: "컴퓨터 비전 기반 패션 조합 적합성 예측" }],
   },
   {
+    period: "Jan. 2020 ~ Mar. 2021",
+    role: { en: "AI Programmer", kr: "AI 프로그래머" },
+    org: { en: "Animal Industry Data Korea", kr: "한국축산데이터" },
+    location: "Seoul",
+    bullets: [
+      { en: "Computer Vision and Reinforcement Learning for object detection, multi-object tracking, and re-identification of livestock", kr: "가축 객체 탐지, 다중 객체 추적, 재식별을 위한 컴퓨터 비전 및 강화학습" },
+      { en: "Pose estimation", kr: "자세 추정(Pose Estimation)" },
+    ],
+  },
+];
+
+const PROJECTS = [
+  {
     period: "Apr. 2020 ~ Dec. 2020",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
     org: { en: "KB Financial Group", kr: "KB금융그룹" },
@@ -169,13 +182,13 @@ const EXPERIENCE = [
     ],
   },
   {
-    period: "Jan. 2020 ~ Mar. 2021",
-    role: { en: "AI Programmer", kr: "AI 프로그래머" },
-    org: { en: "Animal Industry Data Korea", kr: "한국축산데이터" },
-    location: "Seoul",
+    period: "Jul. 2019 ~ Dec. 2019",
+    role: { en: "Project Manager (DEER LAB)", kr: "프로젝트 매니저 (DEER LAB)" },
+    org: "PopFunding",
     bullets: [
-      { en: "Computer Vision and Reinforcement Learning for object detection, multi-object tracking, and re-identification of livestock", kr: "가축 객체 탐지, 다중 객체 추적, 재식별을 위한 컴퓨터 비전 및 강화학습" },
-      { en: "Pose estimation", kr: "자세 추정(Pose Estimation)" },
+      { en: "Developing AI model to evaluate accounts receivable and for risk management", kr: "매출채권 평가 및 리스크 관리를 위한 AI 모델 개발" },
+      { en: "Optimizing LTV and interest rate for accounts receivable financing", kr: "매출채권 금융을 위한 LTV 및 금리 최적화" },
+      { en: "Deep learning based credit score prediction", kr: "딥러닝 기반 신용점수 예측" },
     ],
   },
   {
@@ -216,6 +229,16 @@ const EXPERIENCE = [
     ],
   },
   {
+    period: "Nov. 2018 ~ Apr. 2019",
+    role: { en: "Project Manager (DEER LAB)", kr: "프로젝트 매니저 (DEER LAB)" },
+    org: "2digits",
+    bullets: [
+      { en: "Developing next-generation securities valuation, future value prediction, and risk management model based on artificial intelligence", kr: "AI 기반 차세대 증권 가치평가·미래가치 예측·리스크 관리 모델 개발" },
+      { en: "Deep learning based cryptocurrency volatility prediction", kr: "딥러닝 기반 암호화폐 변동성 예측" },
+      { en: "Extension of stock loan model to evaluate cryptocurrency loans with liquidation and stochastic volatility", kr: "청산 및 확률적 변동성을 반영한 암호화폐 대출 평가로 주식담보대출 모델 확장" },
+    ],
+  },
+  {
     period: "Oct. 2018 ~ Nov. 2018",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
     org: {
@@ -227,6 +250,16 @@ const EXPERIENCE = [
     bullets: [
       { en: "Deep learning survival model for Risk Consultant churn prediction", kr: "리스크 컨설턴트 이탈 예측을 위한 생존분석 딥러닝 모델" },
       { en: "Sequence model to analyze system status and predict errors from core system log data", kr: "핵심 시스템 로그 기반 시스템 상태 분석 및 오류 예측 시퀀스 모델" },
+    ],
+  },
+  {
+    period: "Aug. 2018 ~ Sep. 2018",
+    role: { en: "Researcher (DEER LAB)", kr: "연구원 (DEER LAB)" },
+    org: { en: "Korea Blockchain Association", kr: "한국블록체인협회" },
+    bullets: [
+      { en: "Analysis of employment effectiveness of blockchain technology", kr: "블록체인 기술의 고용 효과성 분석" },
+      { en: "Scenario planning", kr: "시나리오 플래닝" },
+      { en: "Interview", kr: "인터뷰" },
     ],
   },
   {
@@ -243,17 +276,6 @@ const EXPERIENCE = [
     ],
   },
   {
-    period: "Jul. 2017 ~ Dec. 2017",
-    role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
-    org: { en: "Sentience", kr: "센티언스" },
-    location: "Seoul",
-    bullets: [
-      { en: "Web crawling", kr: "웹 크롤링" },
-      { en: "Text mining – fake news detection", kr: "텍스트 마이닝 – 가짜뉴스 탐지" },
-      { en: "Business data analysis", kr: "비즈니스 데이터 분석" },
-    ],
-  },
-  {
     period: "Nov. 2017 ~ Dec. 2017",
     role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
     org: {
@@ -267,48 +289,26 @@ const EXPERIENCE = [
       { en: "Insurance coverage recommender system with Deep Neural Network", kr: "심층신경망 기반 보험 보장 추천 시스템" },
     ],
   },
-];
-
-const PROJECTS = [
-  {
-    period: "Jul. 2019 ~ Dec. 2019",
-    role: { en: "Project Manager", kr: "프로젝트 매니저" },
-    org: "PopFunding",
-    bullets: [
-      { en: "Developing AI model to evaluate accounts receivable and for risk management", kr: "매출채권 평가 및 리스크 관리를 위한 AI 모델 개발" },
-      { en: "Optimizing LTV and interest rate for accounts receivable financing", kr: "매출채권 금융을 위한 LTV 및 금리 최적화" },
-      { en: "Deep learning based credit score prediction", kr: "딥러닝 기반 신용점수 예측" },
-    ],
-  },
-  {
-    period: "Nov. 2018 ~ Apr. 2019",
-    role: { en: "Project Manager", kr: "프로젝트 매니저" },
-    org: "2digits",
-    bullets: [
-      { en: "Developing next-generation securities valuation, future value prediction, and risk management model based on artificial intelligence", kr: "AI 기반 차세대 증권 가치평가·미래가치 예측·리스크 관리 모델 개발" },
-      { en: "Deep learning based cryptocurrency volatility prediction", kr: "딥러닝 기반 암호화폐 변동성 예측" },
-      { en: "Extension of stock loan model to evaluate cryptocurrency loans with liquidation and stochastic volatility", kr: "청산 및 확률적 변동성을 반영한 암호화폐 대출 평가로 주식담보대출 모델 확장" },
-    ],
-  },
-  {
-    period: "Aug. 2018 ~ Sep. 2018",
-    role: { en: "Researcher", kr: "연구원" },
-    org: { en: "Korea Blockchain Association", kr: "한국블록체인협회" },
-    bullets: [
-      { en: "Analysis of employment effectiveness of blockchain technology", kr: "블록체인 기술의 고용 효과성 분석" },
-      { en: "Scenario planning", kr: "시나리오 플래닝" },
-      { en: "Interview", kr: "인터뷰" },
-    ],
-  },
   {
     period: "Jul. 2017 ~ Dec. 2017",
-    role: { en: "Researcher", kr: "연구원" },
+    role: { en: "Researcher (DEER LAB)", kr: "연구원 (DEER LAB)" },
     org: { en: "NICE Investors Service", kr: "나이스신용평가" },
     bullets: [{ en: "An empirical study on financial market, credit infrastructure, and economic growth", kr: "금융시장·신용인프라·경제성장에 관한 실증연구" }],
   },
   {
+    period: "Jul. 2017 ~ Dec. 2017",
+    role: { en: "Data Scientist", kr: "데이터 사이언티스트" },
+    org: { en: "Sentience", kr: "센티언스" },
+    location: "Seoul",
+    bullets: [
+      { en: "Web crawling", kr: "웹 크롤링" },
+      { en: "Text mining – fake news detection", kr: "텍스트 마이닝 – 가짜뉴스 탐지" },
+      { en: "Business data analysis", kr: "비즈니스 데이터 분석" },
+    ],
+  },
+  {
     period: "Jul. 2017 ~ Nov. 2017",
-    role: { en: "Researcher", kr: "연구원" },
+    role: { en: "Researcher (DEER LAB)", kr: "연구원 (DEER LAB)" },
     org: { en: "KAIST 4th Industrial Revolution Research Project", kr: "KAIST 4차산업혁명 연구프로젝트" },
     bullets: [{ en: "Robot industry and labor markets", kr: "로봇 산업과 노동시장" }],
   },
