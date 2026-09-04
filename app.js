@@ -158,17 +158,17 @@ function render() {
   // Profile
   const profileBody = el("div", { class: "chapter-content" });
   PROFILE.summary[lang].forEach((line) => profileBody.appendChild(el("p", { text: line })));
-  main.appendChild(chapter("profile", "profile", profileBody, true));
+  main.appendChild(chapter("profile", "profile", profileBody));
 
   // Skills
   const skillsBody = el("ul", { class: "plain-list" });
   SKILLS[lang].forEach((s) => skillsBody.appendChild(el("li", { text: s })));
-  main.appendChild(chapter("skills", "skills", skillsBody, true));
+  main.appendChild(chapter("skills", "skills", skillsBody));
 
   // Experience
   const expBody = el("div", { class: "chapter-content" });
   EXPERIENCE.forEach((entry) => expBody.appendChild(entryDetails(entry)));
-  main.appendChild(chapter("experience", "experience", expBody, true));
+  main.appendChild(chapter("experience", "experience", expBody));
 
   // Projects
   const projBody = el("div", { class: "chapter-content" });
@@ -183,12 +183,12 @@ function render() {
     if (e.location) body.appendChild(el("p", { class: "entry-location", text: cityName(e.location) }));
     eduBody.appendChild(el("details", { class: "entry" }, [summary, body]));
   });
-  main.appendChild(chapter("education", "education", eduBody, true));
+  main.appendChild(chapter("education", "education", eduBody));
 
   // Teaching Experience
   const teachingBody = el("div", { class: "chapter-content" });
   TEACHING.forEach((entry) => teachingBody.appendChild(entryDetails(entry)));
-  main.appendChild(chapter("teaching", "teaching", teachingBody, true));
+  main.appendChild(chapter("teaching", "teaching", teachingBody));
 
   // Conferences
   const confBody = el("div", { class: "chapter-content" });
