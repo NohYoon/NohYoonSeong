@@ -62,7 +62,7 @@ const EXPERIENCE = [
   {
     period: "Feb. 2022 ~",
     role: { en: "CEO", kr: "대표(CEO)" },
-    org: "A.I.mtory",
+    org: { en: "A.I.mtory", kr: "(주)아임토리" },
     location: "Seoul",
     bullets: [{ en: "AI for Smart Factory", kr: "스마트팩토리를 위한 AI" }],
     projectList: [
