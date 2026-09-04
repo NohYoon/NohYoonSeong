@@ -87,7 +87,26 @@ function citationList(items) {
   return ul;
 }
 
-const NAV_ORDER = ["profile", "skills", "experience", "projects", "education", "conferences", "publications", "services"];
+// Renders one patent citation, e.g. "Title. Korean Patent No. 10-XXXXXXX (2025.04.21). Applicant. Inventors: A, B."
+function patentText(p) {
+  const noLabel = lang === "kr" ? "특허 제" : "Korean Patent No. ";
+  const noSuffix = lang === "kr" ? "호" : "";
+  const inventorLabel = lang === "kr" ? "발명자: " : "Inventors: ";
+  const statusNote = p.status === "lapsed" ? (lang === "kr" ? ", 소멸" : ", lapsed") : "";
+  return `${t(p.title)}. ${noLabel}${p.number}${noSuffix} (${p.date}${statusNote}). ${t(p.applicant)}. ${inventorLabel}${p.inventors.join(", ")}.`;
+}
+
+function patentList(items) {
+  const ul = el("ul", { class: "citation-list" });
+  items.forEach((p) => {
+    const li = document.createElement("li");
+    li.innerHTML = escapeHtml(patentText(p)).replace(/성노윤/g, "<strong>성노윤</strong>");
+    ul.appendChild(li);
+  });
+  return ul;
+}
+
+const NAV_ORDER = ["profile", "skills", "experience", "projects", "education", "conferences", "awards", "patents", "publications", "services"];
 let sectionObserver;
 
 function renderNav() {
@@ -172,6 +191,14 @@ function render() {
   confBody.appendChild(chapter("conf-dom", "domestic", citationList(CONFERENCES.domestic)));
   confBody.appendChild(el("p", { class: "notes", text: UI[lang].notes }));
   main.appendChild(chapter("conferences", "conferences", confBody));
+
+  // Awards
+  const awardsBody = el("div", { class: "chapter-content" });
+  AWARDS.forEach((entry) => awardsBody.appendChild(entryDetails(entry)));
+  main.appendChild(chapter("awards", "awards", awardsBody));
+
+  // Patents
+  main.appendChild(chapter("patents", "patents", patentList(PATENTS)));
 
   // Publications
   const pubBody = el("div", { class: "chapter-content" });
