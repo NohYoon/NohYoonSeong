@@ -348,8 +348,50 @@ const EDUCATION = [
   },
 ];
 
-// Each entry: period, role {en,kr} (course name), org {en,kr}, location, bullets {en,kr}[]
+// Each entry: period, role {en,kr} (course name), org {en,kr}, location, bullets {en,kr}[], note {en,kr}
 const TEACHING = [
+  {
+    period: "2023 Spring – 2026 Spring (annually)",
+    role: { en: "Instructor", kr: "강사" },
+    org: { en: "Korea National Open University", kr: "한국방송통신대학교" },
+    location: "Seoul",
+    bullets: [
+      { en: "Computer Vision — 16-week course", kr: "컴퓨터비전 — 16주 과정" },
+      { en: "Week 1: CV Introduction — Introduction of CV", kr: "1주차: CV 개론 — 컴퓨터 비전 소개" },
+      { en: "Week 2: Convolutional Networks (1) — Basics of CNNs", kr: "2주차: 합성곱 신경망 (1) — CNN 기초" },
+      { en: "Week 3: Convolutional Networks (2) — Basics of CNNs and modern CNNs", kr: "3주차: 합성곱 신경망 (2) — CNN 기초 및 최신 CNN" },
+      { en: "Week 4: Object Detection (1) — Object recognition, detection, segmentation", kr: "4주차: 객체 탐지 (1) — 객체 인식·탐지·분할" },
+      { en: "Week 5: Object Detection (2) — Object recognition, detection, segmentation", kr: "5주차: 객체 탐지 (2) — 객체 인식·탐지·분할" },
+      { en: "Week 6: Object Detection (3) — Object recognition, detection, segmentation", kr: "6주차: 객체 탐지 (3) — 객체 인식·탐지·분할" },
+      { en: "Week 7: Recurrent Neural Networks — Review of RNNs, CNN+RNN models", kr: "7주차: 순환 신경망 — RNN 복습, CNN+RNN 모델" },
+      { en: "Week 8: Attention Models (1) — Attention models in vision", kr: "8주차: 어텐션 모델 (1) — 비전에서의 어텐션 모델" },
+      { en: "Week 9: Attention Models (2) — Transformer in vision", kr: "9주차: 어텐션 모델 (2) — 비전에서의 트랜스포머" },
+      { en: "Week 10: Anomaly Detection", kr: "10주차: 이상 탐지" },
+      { en: "Week 11: Deep Generative Models (1) — VAE, GAN, PixelRNN", kr: "11주차: 딥 생성 모델 (1) — VAE, GAN, PixelRNN" },
+      { en: "Week 12: Deep Generative Models (2) — Applications (image editing, inpainting, super-resolution)", kr: "12주차: 딥 생성 모델 (2) — 응용 (이미지 편집, 인페인팅, 초해상도)" },
+      { en: "Week 13: Reinforcement Learning and Computer Vision", kr: "13주차: 강화학습과 컴퓨터비전" },
+      { en: "Week 14: Recent Trends — Zero-shot, one-shot, few-shot learning, self-supervised learning", kr: "14주차: 최신 동향 — 제로샷·원샷·퓨샷 학습, 자기지도학습" },
+      { en: "Week 15: Real-World Applications — Data collection, preprocessing, training, evaluation, MLOps", kr: "15주차: 실전 응용 — 데이터 수집, 전처리, 학습, 평가, MLOps" },
+    ],
+    note: { en: "Also conducted 6 hands-on lab sessions per term.", kr: "학기당 실습 특강 6회 별도 진행." },
+  },
+  {
+    period: "2023 Fall",
+    role: { en: "Instructor", kr: "강사" },
+    org: { en: "KyungHee University", kr: "경희대학교" },
+    location: "Seoul",
+    bullets: [
+      { en: "Introduction to MIS", kr: "경영정보시스템(개론)" },
+      { en: "Business Programming", kr: "경영프로그래밍" },
+    ],
+  },
+  {
+    period: "2022 Spring",
+    role: { en: "Instructor", kr: "강사" },
+    org: { en: "KyungHee University", kr: "경희대학교" },
+    location: "Seoul",
+    bullets: [{ en: "Introduction to MIS", kr: "경영정보시스템(개론)" }],
+  },
 ];
 
 // Citations kept in original submitted language across both UI languages (academic convention).
