@@ -106,7 +106,7 @@ function patentList(items) {
   return ul;
 }
 
-const NAV_ORDER = ["profile", "skills", "experience", "projects", "education", "conferences", "awards", "patents", "publications", "services"];
+const NAV_ORDER = ["profile", "skills", "experience", "projects", "education", "teaching", "conferences", "awards", "patents", "publications", "services"];
 let sectionObserver;
 
 function renderNav() {
@@ -184,6 +184,11 @@ function render() {
     eduBody.appendChild(el("details", { class: "entry" }, [summary, body]));
   });
   main.appendChild(chapter("education", "education", eduBody, true));
+
+  // Teaching Experience
+  const teachingBody = el("div", { class: "chapter-content" });
+  TEACHING.forEach((entry) => teachingBody.appendChild(entryDetails(entry)));
+  main.appendChild(chapter("teaching", "teaching", teachingBody, true));
 
   // Conferences
   const confBody = el("div", { class: "chapter-content" });

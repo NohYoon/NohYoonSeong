@@ -9,6 +9,7 @@ const UI = {
     experience: "Work Experience",
     projects: "Industrial Projects",
     education: "Education",
+    teaching: "Teaching Experience",
     conferences: "Conferences and Presentations",
     awards: "Awards",
     patents: "Patents",
@@ -29,6 +30,7 @@ const UI = {
     experience: "경력",
     projects: "산업 프로젝트",
     education: "학력",
+    teaching: "강의 경력",
     conferences: "학술발표",
     awards: "수상",
     patents: "특허",
@@ -81,9 +83,19 @@ const EXPERIENCE = [
         period: "Dec. 2025 ~",
       },
       {
+        org: { en: "Hanwha Ocean", kr: "한화오션" },
+        name: { en: "Ship block assembly status tracking algorithm using a 3D exterior inspection platform", kr: "3D 외관 검수 플랫폼을 이용한 선박 소조 조립 현황 파악 알고리즘" },
+        period: "May. 2025 ~ Dec. 2025",
+      },
+      {
         org: { en: "Donghwa Entec", kr: "동화엔텍" },
         name: { en: "Consulting", kr: "컨설팅" },
         period: "Oct. 2024 ~ Dec. 2024",
+      },
+      {
+        org: { en: "Hansol Paper", kr: "한솔제지" },
+        name: { en: "AI-based incinerator operating pattern analysis and control-point prediction by operating standard", kr: "AI 기술을 활용한 소각로 운전 패턴 분석 및 운영 기준별 제어 시점 예측" },
+        period: "Oct. 2024 ~ Mar. 2025",
       },
       {
         org: { en: "SG Global (Sindong Plant)", kr: "SG글로벌 신동사업장" },
@@ -123,6 +135,7 @@ const EXPERIENCE = [
         period: "Oct. 2022 ~ Jan. 2023",
       },
     ],
+    note: { en: "Served as Project Manager (PM) for all A.I.mtory projects listed above.", kr: "위 A.I.mtory 프로젝트는 모두 PM(프로젝트 매니저)으로 수행." },
   },
   {
     period: "Feb. 2023 ~",
@@ -333,6 +346,10 @@ const EDUCATION = [
     org: { en: "Korea Advanced Institute of Science and Technology (KAIST)", kr: "한국과학기술원(KAIST)" },
     location: "Daejeon",
   },
+];
+
+// Each entry: period, role {en,kr} (course name), org {en,kr}, location, bullets {en,kr}[]
+const TEACHING = [
 ];
 
 // Citations kept in original submitted language across both UI languages (academic convention).
