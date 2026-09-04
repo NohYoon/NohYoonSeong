@@ -351,12 +351,12 @@ const EDUCATION = [
 // Each entry: period, role {en,kr} (course name), org {en,kr}, location, bullets {en,kr}[], note {en,kr}
 const TEACHING = [
   {
-    period: "2023 Spring – 2026 Spring (annually)",
+    period: "2023 ~ 2026 (Spring)",
     role: { en: "Instructor", kr: "강사" },
     org: { en: "Korea National Open University", kr: "한국방송통신대학교" },
     location: "Seoul",
     bullets: [
-      { en: "Computer Vision — 16-week course", kr: "컴퓨터비전 — 16주 과정" },
+      { en: "Computer Vision — 16-week course, offered every Spring term", kr: "컴퓨터비전 — 매 봄학기 16주 과정" },
       { en: "Week 1: CV Introduction — Introduction of CV", kr: "1주차: CV 개론 — 컴퓨터 비전 소개" },
       { en: "Week 2: Convolutional Networks (1) — Basics of CNNs", kr: "2주차: 합성곱 신경망 (1) — CNN 기초" },
       { en: "Week 3: Convolutional Networks (2) — Basics of CNNs and modern CNNs", kr: "3주차: 합성곱 신경망 (2) — CNN 기초 및 최신 CNN" },
