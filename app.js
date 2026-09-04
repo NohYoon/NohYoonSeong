@@ -125,6 +125,7 @@ function render() {
   emailLink.textContent = PROFILE.email;
   emailLink.href = "mailto:" + PROFILE.email;
   document.getElementById("scholar").href = PROFILE.scholar;
+  document.getElementById("last-update").textContent = `${UI[lang].lastUpdate}: ${LAST_UPDATE}`;
 
   const main = document.getElementById("main");
   main.innerHTML = "";

@@ -1,4 +1,7 @@
 // All CV content lives here. Add/edit entries and both UI languages update.
+// Bump this whenever content changes — it drives the "Last Update" footer line.
+const LAST_UPDATE = "2026-09-04";
+
 const UI = {
   en: {
     profile: "Professional Profile",
@@ -15,6 +18,7 @@ const UI = {
     domJournal: "Domestic Journal (KCI)",
     workingPapers: "Working Papers",
     selectedProjects: "Selected Projects",
+    lastUpdate: "Last Update",
     notes: "(a) alphabetically ordered (equally contributed) · (c) corresponding author · (f) first author · * equal contribution",
   },
   kr: {
@@ -32,6 +36,7 @@ const UI = {
     domJournal: "국내 저널 (KCI)",
     workingPapers: "작업 중인 논문",
     selectedProjects: "주요 프로젝트",
+    lastUpdate: "최종 수정일",
     notes: "(a) 알파벳 순 (균등 기여) · (c) 교신저자 · (f) 제1저자 · * 균등 기여",
   },
 };
@@ -100,11 +105,6 @@ const EXPERIENCE = [
         org: "교보정보통신",
         name: { en: "Advisory retainer", kr: "자문" },
         period: "Jun. 2023 ~ Dec. 2023",
-      },
-      {
-        org: "주식회사 유명",
-        name: { en: "병석 컨설팅", kr: "병석 컨설팅" },
-        period: "Mar. 2023",
       },
       {
         org: "현대엔지비",
