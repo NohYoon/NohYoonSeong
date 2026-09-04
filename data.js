@@ -138,23 +138,6 @@ const EXPERIENCE = [
     note: { en: "Served as Project Manager (PM) for all A.I.mtory projects listed above.", kr: "위 A.I.mtory 프로젝트는 모두 PM(프로젝트 매니저)으로 수행." },
   },
   {
-    period: "Feb. 2023 ~",
-    role: { en: "Instructor", kr: "강사" },
-    org: { en: "Korea National Open University", kr: "한국방송통신대학교" },
-    location: "Seoul",
-    bullets: [{ en: "Computer Vision", kr: "컴퓨터 비전" }],
-  },
-  {
-    period: "Mar. 2022 ~ Feb. 2023",
-    role: { en: "Instructor", kr: "강사" },
-    org: { en: "KyungHee University", kr: "경희대학교" },
-    location: "Seoul",
-    bullets: [
-      { en: "Management Information Systems", kr: "경영정보시스템" },
-      { en: "Programming Language and Data Science", kr: "프로그래밍 언어 및 데이터 과학" },
-    ],
-  },
-  {
     period: "Oct. 2021 ~ Oct. 2022",
     role: { en: "AI Programmer", kr: "AI 프로그래머" },
     org: { en: "Basbai", kr: "바스바이" },
