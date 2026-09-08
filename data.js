@@ -464,12 +464,8 @@ const PUBLICATIONS = {
     "NohYoon Seong, KiHwan Nam. (2017) “Combining macro-economical effects with sentiment analysis for stock index prediction.” Entrue Journal of Information Technology, 16(2), 41–54 (f)",
   ],
   workingPapers: [
-    "NohYoon Seong, Youngchan Hwang, JooYoung Kim, Keongtae Kim, Sunil Mithas. (2023) “Balancing Expertise: How Equity Crowdfunding and Investor Composition Affect Startup Performance.” MIS Quarterly, Major Revision (f)",
-    "NohYoon Seong, Kanghyun Cho, KiHwan Nam. “Beyond Persuasion: Communication Style as a Buffer Against Market Volatility in Inclusive Decentralized Fundraising.” Journal of Business Research, Major Revision (c)",
+    "Youngchan Hwang*, NohYoon Seong*, JooYoung Kim, Keongtae Kim, Sunil Mithas. (2023) “Balancing Expertise: How Equity Crowdfunding and Investor Composition Affect Startup Performance.” MIS Quarterly, 3rd Round Review",
     "KiHwan Nam, Wonseok Oh, NohYoon Seong. “Frame of Mind: A Validation of Attraction Effects in Recommender Systems Through a Randomized Field Experiment.” Production and Operations Management, Major Revision (a)",
-    "SangMyung Lee, NohYoon Seong. “Existence and Time Trend of Psychological Barrier in Bitcoin Market: Evidence from US, Europe, Hong Kong.” (c)",
-    "Jooyoung Kim, NohYoon Seong, Kihwan Nam. “Better than Humans? AI challenge in Creative Tasks: Randomized Field Experiment on AI Recommender Systems.”",
-    "NohYoon Seong, KiHwan Nam. “Predicting stock movements based on financial news with systematic group identification.” (f)",
   ],
 };
 
