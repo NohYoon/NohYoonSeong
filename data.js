@@ -22,7 +22,7 @@ const UI = {
     workingPapers: "Working Papers",
     selectedProjects: "Selected Projects",
     lastUpdate: "Last Update",
-    notes: "(a) alphabetically ordered (equally contributed) · (c) corresponding author · (f) first author · * equal contribution",
+    notes: "(a) alphabetically ordered (equally contributed) · (c) corresponding author · (f) first author · (e) equally contributed",
   },
   kr: {
     profile: "소개",
@@ -43,7 +43,7 @@ const UI = {
     workingPapers: "작업 중인 논문",
     selectedProjects: "주요 프로젝트",
     lastUpdate: "최종 수정일",
-    notes: "(a) 알파벳 순 (균등 기여) · (c) 교신저자 · (f) 제1저자 · * 균등 기여",
+    notes: "(a) 알파벳 순 (균등 기여) · (c) 교신저자 · (f) 제1저자 · (e) 균등 기여",
   },
 };
 
@@ -464,7 +464,7 @@ const PUBLICATIONS = {
     "NohYoon Seong, KiHwan Nam. (2017) “Combining macro-economical effects with sentiment analysis for stock index prediction.” Entrue Journal of Information Technology, 16(2), 41–54 (f)",
   ],
   workingPapers: [
-    "Youngchan Hwang*, NohYoon Seong*, JooYoung Kim, Keongtae Kim, Sunil Mithas. (2023) “Balancing Expertise: How Equity Crowdfunding and Investor Composition Affect Startup Performance.” MIS Quarterly, 3rd Round Review",
+    "Youngchan Hwang, NohYoon Seong, JooYoung Kim, Keongtae Kim, Sunil Mithas. (2023) “Balancing Expertise: How Equity Crowdfunding and Investor Composition Affect Startup Performance.” MIS Quarterly, 3rd Round Review (f, e)",
     "KiHwan Nam, Wonseok Oh, NohYoon Seong. “Frame of Mind: A Validation of Attraction Effects in Recommender Systems Through a Randomized Field Experiment.” Production and Operations Management, Major Revision (a)",
   ],
 };
