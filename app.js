@@ -115,6 +115,48 @@ function statementParagraphs(statement) {
   return div;
 }
 
+// Featured Publications: a curated, theme-grouped highlight list (see FEATURED_PUBLICATIONS in
+// data.js) shown above the exhaustive Publications/Conferences chapters, modeled on
+// jaeungs.github.io/research.
+function buildFeaturedPublications() {
+  const wrap = el("div", { class: "featured-pubs" });
+  wrap.appendChild(el("h3", { class: "featured-pubs-heading", text: UI[lang].featuredPublications }));
+  FEATURED_PUBLICATIONS[lang].forEach((group) => {
+    wrap.appendChild(el("p", { class: "entry-subheading", text: group.theme }));
+    const ul = el("ul", { class: "citation-list feature-list" });
+    group.items.forEach((item) => {
+      const li = document.createElement("li");
+      const citation = document.createElement("p");
+      citation.className = "feature-citation";
+      citation.innerHTML = boldName(item.citation);
+      li.appendChild(citation);
+      if (item.description) li.appendChild(el("p", { class: "feature-description", text: item.description }));
+      ul.appendChild(li);
+    });
+    wrap.appendChild(ul);
+  });
+  return wrap;
+}
+
+// Courses Taught: grouped by institution, per-course level/title/semesters/description,
+// modeled on jaeungs.github.io/teaching.
+function buildCoursesTaught() {
+  const wrap = el("div", { class: "courses-taught" });
+  wrap.appendChild(el("h3", { class: "featured-pubs-heading", text: UI[lang].coursesTaught }));
+  COURSES_TAUGHT[lang].forEach((group) => {
+    wrap.appendChild(el("p", { class: "entry-subheading", text: group.institution }));
+    group.courses.forEach((c) => {
+      const block = el("div", { class: "course-block" });
+      block.appendChild(el("p", { class: "course-level", text: c.level }));
+      block.appendChild(el("p", { class: "course-title", text: c.title }));
+      block.appendChild(el("p", { class: "course-semesters", text: c.semesters }));
+      block.appendChild(el("p", { class: "course-description", text: c.description }));
+      wrap.appendChild(block);
+    });
+  });
+  return wrap;
+}
+
 // --- Section builders: each returns one chapter/section DOM node, reused across tabs ---
 
 function buildProfileChapter() {
@@ -245,7 +287,8 @@ function renderHomeTab(main) {
 
 function renderResearchTab(main) {
   main.appendChild(el("h2", { class: "statement-heading", text: UI[lang].researchStatement }));
-  main.appendChild(statementParagraphs(RESEARCH_STATEMENT));
+  main.appendChild(statementParagraphs(RESEARCH_INTERESTS));
+  main.appendChild(buildFeaturedPublications());
   main.appendChild(buildPublicationsChapter());
   main.appendChild(buildConferencesChapter());
   main.appendChild(buildPatentsChapter());
@@ -254,7 +297,8 @@ function renderResearchTab(main) {
 
 function renderTeachingTab(main) {
   main.appendChild(el("h2", { class: "statement-heading", text: UI[lang].teachingStatement }));
-  main.appendChild(statementParagraphs(TEACHING_STATEMENT));
+  main.appendChild(statementParagraphs(TEACHING_INTERESTS));
+  main.appendChild(buildCoursesTaught());
   main.appendChild(buildTeachingChapter());
 }
 

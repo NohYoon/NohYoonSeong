@@ -194,6 +194,39 @@ main#main {
 }
 .statement p { margin: 0 0 1em; }
 
+.featured-pubs, .courses-taught { margin-top: 1.8em; }
+.featured-pubs-heading {
+  margin: 0 0 0.6em;
+  font-family: "EB Garamond", serif;
+  font-weight: 600;
+  color: var(--accent);
+  font-size: 1.15rem;
+}
+.feature-list { list-style: none; padding: 0; margin: 0 0 1.2em; }
+.feature-list li {
+  padding: 0.6em 0;
+  border-top: 1px solid var(--border);
+}
+.feature-list li:last-child { padding-bottom: 0; }
+.feature-citation { margin: 0 0 0.35em; }
+.feature-description { margin: 0; color: var(--muted); font-size: 0.92rem; }
+
+.course-block {
+  padding: 0.6em 0;
+  margin-bottom: 0.4em;
+  border-top: 1px solid var(--border);
+}
+.course-level {
+  margin: 0 0 0.15em;
+  font-variant: small-caps;
+  letter-spacing: 0.02em;
+  font-size: 0.85rem;
+  color: var(--accent-soft);
+}
+.course-title { margin: 0 0 0.15em; font-weight: 700; font-size: 1.05rem; }
+.course-semesters { margin: 0 0 0.35em; font-style: italic; color: var(--muted); font-size: 0.92rem; }
+.course-description { margin: 0; }
+
 .home-links {
   list-style: none;
   margin: 1.6em 0 0;
