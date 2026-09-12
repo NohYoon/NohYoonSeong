@@ -4,6 +4,15 @@ const LAST_UPDATE = "2026-09-04";
 
 const UI = {
   en: {
+    tabHome: "Home",
+    tabResearch: "Research",
+    tabTeaching: "Teaching",
+    tabCV: "Full CV",
+    researchStatement: "Research Statement",
+    teachingStatement: "Teaching Statement",
+    homeLinkResearch: "Research — statement, publications, and patents",
+    homeLinkTeaching: "Teaching — statement and teaching experience",
+    homeLinkCV: "Full CV — the complete curriculum vitae",
     profile: "Professional Profile",
     skills: "Skills",
     experience: "Work Experience",
@@ -25,6 +34,15 @@ const UI = {
     notes: "(a) alphabetically ordered (equally contributed) · (c) corresponding author · (f) first author · (e) equally contributed · * denotes equally contributing authors",
   },
   kr: {
+    tabHome: "홈",
+    tabResearch: "연구",
+    tabTeaching: "강의",
+    tabCV: "전체 CV",
+    researchStatement: "연구계획서",
+    teachingStatement: "강의계획서",
+    homeLinkResearch: "연구 — 연구계획서, 논문, 특허",
+    homeLinkTeaching: "강의 — 강의계획서, 강의 경력",
+    homeLinkCV: "전체 CV — 전체 이력서",
     profile: "소개",
     skills: "보유 역량",
     experience: "경력",
@@ -61,6 +79,46 @@ const PROFILE = {
 const SKILLS = {
   en: ["Python programming for Machine Learning and Deep Learning", "R programming & C++ programming", "Econometrics"],
   kr: ["머신러닝/딥러닝을 위한 Python 프로그래밍", "R 프로그래밍 & C++ 프로그래밍", "계량경제학"],
+};
+
+const RESEARCH_STATEMENT = {
+  en: [
+    "My dissertation research started from a specific frustration with how financial machine learning treats its subjects. Most models score one firm, one stock, one borrower at a time, as if it existed in isolation. In practice a company's stock price often reacts to news about its suppliers and competitors before analysts start writing about the company itself, and a firm's credit risk is tied to the health of the network it buys from and sells to. Throwing away that structure means throwing away information, sometimes more information than the target firm's own history contains. My dissertation, and most of what I have worked on since, asks how to put that network structure back into the model.",
+    "The first essay (Decision Support Systems, 2019, with KiHwan Nam) took this on for stock prediction. Earlier work used news about a target company, or occasionally its listed peers, to forecast price movement. I used transfer entropy, a measure borrowed from physics that quantifies directional information flow between two time series, to infer which companies actually move which other companies within a sector, rather than assuming every firm pair influences each other symmetrically. The prediction gain showed up exactly where it mattered most: stocks with almost no news coverage of their own still moved predictably once the model tracked news about the firms that causally led them. A follow-up (Expert Systems with Applications, 2021) extended this by segmenting the market before running the same causal analysis within each segment.",
+    "The second essay pushed the same idea from stock prediction into credit risk, and it is still working its way to a journal; it won a best student paper nomination at the INFORMS Workshop on Data Science and was presented at a KDD workshop on machine learning in finance. Financial-distress models usually score a firm from its own balance sheet, while a separate line of research in finance and physics studies how shocks propagate through networks of banks. Almost nobody connects the two at the level of individual industrial firms. I combined a variational autoencoder over balance-sheet features with a graph convolutional network built from firms' actual buyer-seller relationships, so a company's risk score could move even when nothing on its own balance sheet had changed, because a major customer or supplier had just defaulted.",
+    "The third essay applied the same logic to portfolio management, and it eventually split into two papers. Rather than using a fixed classification like GICS sector codes to decide which assets belong together, I built the network directly from the data: transfer entropy for causal links, random matrix theory to strip market-wide noise out of the correlation structure. That network-based forecasting model became a Knowledge-Based Systems paper (2022). The part that turned those forecasts into actual portfolio weights through a reinforcement-learning agent became a separate paper with JunKyu Jang (Expert Systems with Applications, 2023), where I supervised the reinforcement-learning and portfolio-theory side of the work.",
+    "The same instinct, that the interesting unit is rarely a single isolated point, keeps showing up in what I have done since. With Youngchan Hwang and coauthors, currently in a third round of review at MIS Quarterly, I look at equity crowdfunding, where a startup's outcome depends not only on how much it raises but on who its investors are and how that composition changes what the firm can do afterward. With KiHwan Nam and Wonseok Oh, under revision at Production and Operations Management, we ran a randomized field experiment on recommender systems and found that framing a set of options as a side-by-side comparison, rather than simply ranking them, changes what people choose. The interface around a recommendation turns out not to be separable from the recommendation itself. And a 2021 IEEE Access paper took the causality tools from my dissertation somewhere I did not expect when I started it: forecasting fine particulate matter (PM2.5) by modeling how pollution at one monitoring station causally leads readings at another.",
+    "Since 2022 I have also run an applied AI company, building computer vision and predictive-maintenance systems for manufacturing plants and shipyards, and I hold 30 patents covering things like robot-arm motion analysis, digital-twin-based robot control, and vibration and noise reduction in industrial robot arms. None of that is academic research, but it has changed how I read my own papers. When a model has to run on a factory floor, next to a maintenance team that will ignore it the first time it produces a confusing alert, interpretability and usability stop being a section added to the discussion and become the actual constraint the model has to satisfy. I want to bring more of that discipline into my academic work: not just whether a network-aware model predicts better, but whether the people acting on its output actually trust and use it.",
+    "Going forward, I want to move the network-and-deep-learning approach from my dissertation into settings where the network itself is being actively managed rather than sitting there as a fixed graph to observe. In fintech that means investor networks in crowdfunding and informal lending, where the ties are themselves a choice, not just a channel risk happens to travel through. In industrial AI it means production networks where a single vendor failure can sometimes be routed around rather than absorbed as an inevitable shock. Both questions come back to what I started with in my dissertation: once you admit that the things you are trying to predict are connected to each other, how much of what looks like an individual outcome is actually a network effect wearing an individual's name, and can a model that knows the difference make a better decision, not just a more accurate prediction.",
+  ],
+  kr: [
+    "제 박사학위논문은 금융 머신러닝이 대상을 다루는 방식에 대한 구체적인 불만에서 시작됐습니다. 대부분의 모델은 기업 하나, 주식 하나, 차주 하나를 마치 고립된 존재인 것처럼 따로 떼어 점수를 매깁니다. 하지만 실제로는 한 기업의 주가가 그 기업 자체에 대한 뉴스가 나오기도 전에 협력사나 경쟁사 뉴스에 먼저 반응하는 경우가 많고, 한 기업의 신용위험은 그 기업이 거래하는 네트워크 전체의 건강 상태와 얽혀 있습니다. 이 구조를 무시하면 정보를 버리는 셈이고, 때로는 그 정보가 대상 기업 자체의 과거 데이터보다 더 많은 것을 말해줍니다. 제 박사논문과 이후 연구 대부분은 이 네트워크 구조를 모델에 다시 넣는 방법을 다룹니다.",
+    "첫 번째 에세이(Decision Support Systems, 2019, KiHwan Nam과 공저)는 주가 예측에서 이 문제를 다뤘습니다. 기존 연구는 대상 기업에 대한 뉴스, 혹은 가끔 그 동종업계 기업들의 뉴스만을 이용해 주가 움직임을 예측했습니다. 저는 물리학에서 빌려온 지표인 전이 엔트로피(transfer entropy)를 이용해, 모든 기업 쌍이 서로 대칭적으로 영향을 준다고 가정하는 대신 같은 섹터 안에서 어느 기업이 실제로 어느 기업을 움직이는지를 추론했습니다. 성능 향상은 정확히 기대했던 지점에서 나타났습니다. 자기 자신에 대한 뉴스가 거의 없는 종목도, 그 종목을 인과적으로 이끄는 기업들의 뉴스를 추적하기 시작하자 예측 가능한 움직임을 보였습니다. 후속 연구(Expert Systems with Applications, 2021)는 시장을 먼저 세분화한 뒤 각 세그먼트 안에서 같은 인과분석을 적용해 이를 확장했습니다.",
+    "두 번째 에세이는 같은 아이디어를 주가 예측에서 신용위험으로 옮겼고, 아직 저널 게재를 향해 가는 중입니다. INFORMS Workshop on Data Science에서 우수학생논문상 후보에 올랐고, KDD의 금융 머신러닝 워크숍에서 발표했습니다. 재무부실 예측 모델은 보통 기업 자신의 재무제표만으로 점수를 매기고, 금융과 물리학의 또 다른 연구 흐름은 은행 네트워크를 통한 충격 전파를 따로 연구합니다. 개별 산업 기업 수준에서 이 둘을 연결한 연구는 거의 없었습니다. 저는 재무제표 특성에 대한 변분 오토인코더(VAE)와 기업들의 실제 매입·매출 관계로 구성한 그래프 합성곱 네트워크를 결합했습니다. 그 결과 한 기업의 위험 점수가 자기 재무제표에는 아무 변화가 없어도, 주요 거래처가 부도났다는 이유만으로 움직일 수 있게 됐습니다.",
+    "세 번째 에세이는 같은 논리를 포트폴리오 운용에 적용했고, 결국 두 편의 논문으로 나뉘었습니다. GICS 섹터 코드 같은 고정된 분류 대신, 데이터에서 직접 네트워크를 구성했습니다. 인과관계는 전이 엔트로피로, 상관관계에서 시장 전체 노이즈를 걷어내는 데는 랜덤 행렬 이론(random matrix theory)을 썼습니다. 이 네트워크 기반 예측 모델은 Knowledge-Based Systems(2022)에 실렸습니다. 그 예측을 실제 포트폴리오 비중으로 바꾸는, 강화학습 에이전트를 쓰는 부분은 JunKyu Jang과 함께 별도 논문(Expert Systems with Applications, 2023)이 됐고, 저는 강화학습과 포트폴리오 이론 쪽을 지도했습니다.",
+    "흥미로운 분석 단위는 좀처럼 고립된 하나의 점이 아니라는 같은 직관은 이후 연구에도 이어졌습니다. Youngchan Hwang 및 공저자들과 함께 현재 MIS Quarterly에서 3차 심사를 받고 있는 연구에서는, 스타트업의 성과가 단지 얼마를 투자받았는지가 아니라 누구에게 투자받았는지, 그리고 그 투자자 구성이 이후 기업이 할 수 있는 일을 어떻게 바꾸는지를 봅니다. KiHwan Nam, Wonseok Oh와 함께 Production and Operations Management에서 수정 중인 연구에서는, 추천 시스템에 대한 무작위 현장실험을 통해 선택지를 단순히 순위 매겨 보여주는 대신 나란히 비교하도록 프레이밍하면 사람들의 선택이 달라진다는 것을 발견했습니다. 추천 자체와 그 주변의 인터페이스는 분리할 수 없다는 뜻입니다. 그리고 2021년 IEEE Access 논문은 박사논문의 인과분석 도구를 전혀 예상치 못한 곳으로 가져갔습니다. 한 측정소의 초미세먼지(PM2.5) 농도가 다른 측정소의 측정값에 인과적으로 영향을 준다는 점을 모델링해, 각 측정소를 독립적인 예측 문제로 다루지 않고 미세먼지 농도를 예측한 것입니다.",
+    "2022년부터는 제조 공장과 조선소를 위한 컴퓨터 비전·예지보전 시스템을 만드는 AI 회사를 직접 운영하고 있고, 로봇팔 동작 분석, 디지털 트윈 기반 로봇 제어, 산업용 로봇팔의 진동·소음 저감 같은 분야에서 특허 30건을 보유하고 있습니다. 이건 학술 연구는 아니지만, 제 논문을 스스로 읽는 방식을 바꿔놨습니다. 모델이 공장 현장에서, 헷갈리는 알림 하나만 떠도 곧바로 무시해버릴 정비팀 옆에서 돌아가야 할 때, 해석가능성과 사용성은 논의 섹션에 덧붙이는 항목이 아니라 모델이 실제로 만족해야 하는 제약조건이 됩니다. 저는 이 태도를 학술 연구에도 더 가져오고 싶습니다. 네트워크를 반영한 모델이 예측을 더 잘하는지뿐만 아니라, 그 결과를 가지고 행동하는 사람들이 실제로 그것을 신뢰하고 쓰는지까지요.",
+    "앞으로는 박사논문의 네트워크·딥러닝 접근법을, 네트워크 자체가 그저 관찰 대상인 고정된 그래프가 아니라 능동적으로 관리되는 상황으로 옮기고 싶습니다. 핀테크에서는 크라우드펀딩이나 비공식 대출에서의 투자자 네트워크가 그런 경우입니다. 그 관계 자체가 위험이 흘러가는 통로일 뿐 아니라 하나의 선택이기도 하니까요. 산업 AI에서는 특정 협력업체 하나가 실패했을 때 그 충격을 그냥 흡수하는 대신 우회할 수 있는 생산 네트워크가 그런 경우입니다. 두 질문 모두 박사논문에서 시작한 질문으로 돌아갑니다. 예측하려는 대상들이 서로 연결되어 있다는 걸 인정하고 나면, 개별적인 결과처럼 보이는 것 중 얼마만큼이 실은 개인의 이름을 하고 있는 네트워크 효과인지, 그리고 그 차이를 아는 모델이 더 정확한 예측이 아니라 더 나은 의사결정을 만들어낼 수 있는지입니다.",
+  ],
+};
+
+const TEACHING_STATEMENT = {
+  en: [
+    "I teach computer vision to a group of students I rarely see in a room: most of them are working adults enrolled through Korea National Open University, taking the course around a full-time job. That changes how I think about a lecture. A live classroom lets you notice confusion on someone's face and adjust; distance teaching does not give you that feedback loop, so the material has to do more of the work up front, and the practice sessions have to make up the rest.",
+    "The Computer Vision course I have taught there every spring since 2023 runs sixteen weeks, from convolutional networks through object detection, recurrent and attention-based models, anomaly detection, generative models such as VAEs and GANs, reinforcement learning applied to vision, and finally the more recent territory of few-shot and self-supervised learning. I added six hands-on lab sessions on top of the lecture weeks, because in this field understanding an architecture and being able to get one running are genuinely different skills, and a course that only teaches the first one leaves students unable to do the second. Watching someone stare at a loss curve that refuses to go down teaches things a slide never will.",
+    "At KyungHee University I taught Introduction to Management Information Systems and Business Programming to students who, in most cases, had never written a line of code and had no plan to become programmers. That is a different teaching problem from the one at KNOU. The goal is not to produce someone who can implement an algorithm; it is to produce someone who can look at a business process and see where data and computation actually change the decision being made. I built the programming exercises around small business scenarios instead of generic textbook problems, so the code was doing something a business student already had intuition for before it did something abstract.",
+    "Running an AI company alongside teaching turns out to matter for the classroom, not just the research. When I lecture on anomaly detection or object detection, I can point to a real system, one of the ones I have built for a manufacturing plant, and explain exactly where it failed the first time and why, instead of pulling out a toy dataset that behaves too well. Students find the failure cases more useful than the successes. I certainly did, back when I was the one debugging them at 2am.",
+    "What I actually want a student to leave with is not a list of architectures. It is the ability to look at a model that is not working and have a real hypothesis about why, instead of guessing which hyperparameter to change next. That is a slower thing to teach than a syllabus of named methods, and it is the reason I keep the lab sessions rather than trading them for more lecture content.",
+    "If I move into a full faculty position, I want to build on this rather than start over: a course that treats causal and network-aware methods, the ones from my own research, as a normal part of the machine learning toolkit rather than a specialized topic bolted on at the end, and a project-based course that pairs students with the kind of messy, only partially labeled industrial data I deal with at A.I.mtory, because that is the data they will actually meet after graduation, not the clean benchmark datasets a course usually hands them.",
+  ],
+  kr: [
+    "저는 강의실에서 거의 얼굴을 볼 일이 없는 학생들에게 컴퓨터 비전을 가르칩니다. 대부분 한국방송통신대학교를 통해 등록한, 정규직으로 일하면서 틈틈이 수업을 듣는 성인 학습자들입니다. 이 사실은 강의를 준비하는 방식 자체를 바꿉니다. 대면 강의라면 학생 표정에서 이해가 안 되는 순간을 포착해 바로 설명 방식을 바꿀 수 있지만, 원격 강의는 그런 피드백 루프를 주지 않습니다. 그래서 강의 자료가 사전에 더 많은 일을 해줘야 하고, 실습 시간이 나머지를 채워야 합니다.",
+    "2023년 봄학기부터 매년 맡고 있는 컴퓨터 비전 강의는 16주 과정으로, 합성곱 신경망부터 객체 탐지, 순환·어텐션 기반 모델, 이상 탐지, VAE·GAN 같은 생성 모델, 비전에 적용한 강화학습을 거쳐 최근의 퓨샷·자기지도학습까지 다룹니다. 저는 강의 주차 위에 실습 특강 6회를 따로 얹었는데, 이 분야에서는 아키텍처를 이해하는 것과 실제로 그걸 돌아가게 만드는 것이 완전히 다른 능력이기 때문입니다. 전자만 가르치는 강의는 학생을 후자를 못 하는 상태로 남겨둡니다. 내려갈 생각을 안 하는 손실 곡선을 학생이 직접 붙들고 씨름하는 경험은 슬라이드로는 절대 가르칠 수 없습니다.",
+    "경희대학교에서는 경영정보시스템개론과 경영프로그래밍을, 대부분 코드를 한 줄도 짜본 적 없고 프로그래머가 될 계획도 없는 학생들에게 가르쳤습니다. 이건 방송대와는 다른 종류의 강의 문제입니다. 목표는 알고리즘을 구현할 수 있는 사람을 만드는 게 아니라, 어떤 비즈니스 프로세스를 보고 데이터와 연산이 실제로 그 의사결정을 어떻게 바꾸는지 볼 수 있는 사람을 만드는 것입니다. 저는 일반적인 교재 문제 대신 작은 비즈니스 시나리오를 중심으로 프로그래밍 실습을 구성해서, 코드가 추상적인 무언가를 하기 전에 경영학 전공 학생이 이미 직관적으로 이해하고 있는 무언가를 하도록 했습니다.",
+    "AI 회사를 직접 운영하는 게 연구뿐 아니라 강의에도 영향을 줍니다. 이상 탐지나 객체 탐지를 가르칠 때, 저는 너무 얌전하게 잘 돌아가는 장난감 데이터셋 대신 제가 실제로 제조 공장에 구축한 시스템을 예로 들면서, 그게 처음에 정확히 어디서 왜 실패했는지 설명할 수 있습니다. 학생들은 성공 사례보다 실패 사례에서 더 많은 걸 얻습니다. 새벽 2시에 그걸 직접 디버깅하던 저도 그랬으니까요.",
+    "제가 학생에게 정말로 남기고 싶은 건 아키텍처 목록이 아닙니다. 모델이 제대로 작동하지 않을 때, 다음에 어떤 하이퍼파라미터를 바꿔볼지 무작정 찍는 대신 왜 안 되는지에 대한 진짜 가설을 세울 수 있는 능력입니다. 이건 유명한 방법론 이름을 나열한 커리큘럼보다 가르치는 데 훨씬 오래 걸리는 것이고, 그게 제가 실습 시간을 강의 시간으로 바꾸지 않고 계속 유지하는 이유입니다.",
+    "만약 전임 교원이 된다면, 처음부터 다시 시작하기보다는 지금 하고 있는 것 위에 쌓아가고 싶습니다. 제 연구에서 다루는 인과·네트워크 기반 방법론을 뒤에 덧붙이는 특수 주제가 아니라 머신러닝 도구상자의 당연한 일부로 다루는 강의, 그리고 학생들을 A.I.mtory에서 제가 실제로 다루는 지저분하고 부분적으로만 라벨링된 산업 데이터와 짝지어주는 프로젝트 기반 강의를 만들고 싶습니다. 졸업 후 학생들이 실제로 마주할 데이터는 강의에서 흔히 주어지는 깔끔한 벤치마크 데이터셋이 아니라 바로 그런 데이터니까요.",
+  ],
 };
 
 // Each entry: period, role {en,kr}, org, location, bullets {en,kr}[]

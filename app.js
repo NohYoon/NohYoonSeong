@@ -1,4 +1,7 @@
 let lang = localStorage.getItem("lang") || "en";
+let activeTab = localStorage.getItem("tab") || "home";
+const TABS = ["home", "research", "teaching", "cv"];
+const TAB_LABEL_KEY = { home: "tabHome", research: "tabResearch", teaching: "tabTeaching", cv: "tabCV" };
 
 function t(field) {
   return typeof field === "string" ? field : field[lang];
@@ -106,6 +109,169 @@ function patentList(items) {
   return ul;
 }
 
+function statementParagraphs(statement) {
+  const div = el("div", { class: "statement" });
+  statement[lang].forEach((p) => div.appendChild(el("p", { text: p })));
+  return div;
+}
+
+// --- Section builders: each returns one chapter/section DOM node, reused across tabs ---
+
+function buildProfileChapter() {
+  const body = el("div", { class: "chapter-content" });
+  PROFILE.summary[lang].forEach((line) => body.appendChild(el("p", { text: line })));
+  return chapter("profile", "profile", body);
+}
+
+function buildSkillsChapter() {
+  const body = el("ul", { class: "plain-list" });
+  SKILLS[lang].forEach((s) => body.appendChild(el("li", { text: s })));
+  return chapter("skills", "skills", body);
+}
+
+function buildExperienceChapter() {
+  const body = el("div", { class: "chapter-content" });
+  EXPERIENCE.forEach((entry) => body.appendChild(entryDetails(entry)));
+  return chapter("experience", "experience", body);
+}
+
+function buildProjectsChapter() {
+  const body = el("div", { class: "chapter-content" });
+  PROJECTS.forEach((entry) => body.appendChild(entryDetails(entry)));
+  return chapter("projects", "projects", body);
+}
+
+function buildEducationChapter() {
+  const body = el("div", { class: "chapter-content" });
+  EDUCATION.forEach((e) => {
+    const summary = entrySummary(e.period, t(e.degree), t(e.org));
+    const entryBody = el("div", { class: "entry-body" });
+    if (e.location) entryBody.appendChild(el("p", { class: "entry-location", text: cityName(e.location) }));
+    body.appendChild(el("details", { class: "entry" }, [summary, entryBody]));
+  });
+  return chapter("education", "education", body);
+}
+
+function buildTeachingChapter() {
+  const body = el("div", { class: "chapter-content" });
+  TEACHING.forEach((entry) => body.appendChild(entryDetails(entry)));
+  return chapter("teaching", "teaching", body);
+}
+
+function buildConferencesChapter() {
+  const body = el("div", { class: "chapter-content" });
+  body.appendChild(chapter("conf-intl", "international", citationList(CONFERENCES.international)));
+  body.appendChild(chapter("conf-dom", "domestic", citationList(CONFERENCES.domestic)));
+  body.appendChild(el("p", { class: "notes", text: UI[lang].notes }));
+  return chapter("conferences", "conferences", body);
+}
+
+function buildAwardsChapter() {
+  const body = el("div", { class: "chapter-content" });
+  AWARDS.forEach((entry) => body.appendChild(entryDetails(entry)));
+  return chapter("awards", "awards", body);
+}
+
+function buildPatentsChapter() {
+  return chapter("patents", "patents", patentList(PATENTS));
+}
+
+function buildPublicationsChapter() {
+  const body = el("div", { class: "chapter-content" });
+  body.appendChild(chapter("pub-intl", "intlJournal", citationList(PUBLICATIONS.intlJournal)));
+  body.appendChild(chapter("pub-dom", "domJournal", citationList(PUBLICATIONS.domJournal)));
+  body.appendChild(chapter("pub-wp", "workingPapers", citationList(PUBLICATIONS.workingPapers)));
+  body.appendChild(el("p", { class: "notes", text: UI[lang].notes }));
+  return chapter("publications", "publications", body);
+}
+
+function buildServicesChapter() {
+  return chapter("services", "services", el("ul", { class: "plain-list" }, SERVICES.map((s) => el("li", { text: t(s) }))));
+}
+
+// --- Tabs ---
+
+function switchTab(tabId) {
+  if (tabId === activeTab) return;
+  activeTab = tabId;
+  localStorage.setItem("tab", tabId);
+  render();
+  window.scrollTo(0, 0);
+}
+
+document.addEventListener("click", (e) => {
+  const link = e.target.closest("[data-tab]");
+  if (!link) return;
+  e.preventDefault();
+  switchTab(link.dataset.tab);
+});
+
+function renderTabsNav() {
+  const nav = document.getElementById("page-tabs-inner");
+  nav.innerHTML = "";
+  TABS.forEach((tabId) => {
+    const a = document.createElement("a");
+    a.href = "#";
+    a.textContent = UI[lang][TAB_LABEL_KEY[tabId]];
+    a.dataset.tab = tabId;
+    a.classList.toggle("active", tabId === activeTab);
+    nav.appendChild(a);
+  });
+}
+
+function renderHomeTab(main) {
+  const intro = el("div", { class: "chapter-content" });
+  PROFILE.summary[lang].forEach((line) => intro.appendChild(el("p", { text: line })));
+  main.appendChild(intro);
+
+  const skillsList = el("ul", { class: "plain-list" });
+  SKILLS[lang].forEach((s) => skillsList.appendChild(el("li", { text: s })));
+  main.appendChild(skillsList);
+
+  const links = el("ul", { class: "home-links" });
+  [
+    ["research", UI[lang].homeLinkResearch],
+    ["teaching", UI[lang].homeLinkTeaching],
+    ["cv", UI[lang].homeLinkCV],
+  ].forEach(([tabId, text]) => {
+    const a = document.createElement("a");
+    a.href = "#";
+    a.dataset.tab = tabId;
+    a.textContent = text;
+    links.appendChild(el("li", {}, [a]));
+  });
+  main.appendChild(links);
+}
+
+function renderResearchTab(main) {
+  main.appendChild(el("h2", { class: "statement-heading", text: UI[lang].researchStatement }));
+  main.appendChild(statementParagraphs(RESEARCH_STATEMENT));
+  main.appendChild(buildPublicationsChapter());
+  main.appendChild(buildConferencesChapter());
+  main.appendChild(buildPatentsChapter());
+  main.appendChild(buildServicesChapter());
+}
+
+function renderTeachingTab(main) {
+  main.appendChild(el("h2", { class: "statement-heading", text: UI[lang].teachingStatement }));
+  main.appendChild(statementParagraphs(TEACHING_STATEMENT));
+  main.appendChild(buildTeachingChapter());
+}
+
+function renderCVTab(main) {
+  main.appendChild(buildProfileChapter());
+  main.appendChild(buildSkillsChapter());
+  main.appendChild(buildExperienceChapter());
+  main.appendChild(buildProjectsChapter());
+  main.appendChild(buildEducationChapter());
+  main.appendChild(buildTeachingChapter());
+  main.appendChild(buildConferencesChapter());
+  main.appendChild(buildAwardsChapter());
+  main.appendChild(buildPatentsChapter());
+  main.appendChild(buildPublicationsChapter());
+  main.appendChild(buildServicesChapter());
+}
+
 const NAV_ORDER = ["profile", "skills", "experience", "projects", "education", "teaching", "conferences", "awards", "patents", "publications", "services"];
 let sectionObserver;
 
@@ -152,72 +318,24 @@ function render() {
   document.getElementById("scholar").href = PROFILE.scholar;
   document.getElementById("last-update").textContent = `${UI[lang].lastUpdate}: ${LAST_UPDATE}`;
 
+  renderTabsNav();
+
   const main = document.getElementById("main");
   main.innerHTML = "";
 
-  // Profile
-  const profileBody = el("div", { class: "chapter-content" });
-  PROFILE.summary[lang].forEach((line) => profileBody.appendChild(el("p", { text: line })));
-  main.appendChild(chapter("profile", "profile", profileBody));
+  if (activeTab === "home") renderHomeTab(main);
+  else if (activeTab === "research") renderResearchTab(main);
+  else if (activeTab === "teaching") renderTeachingTab(main);
+  else renderCVTab(main);
 
-  // Skills
-  const skillsBody = el("ul", { class: "plain-list" });
-  SKILLS[lang].forEach((s) => skillsBody.appendChild(el("li", { text: s })));
-  main.appendChild(chapter("skills", "skills", skillsBody));
-
-  // Experience
-  const expBody = el("div", { class: "chapter-content" });
-  EXPERIENCE.forEach((entry) => expBody.appendChild(entryDetails(entry)));
-  main.appendChild(chapter("experience", "experience", expBody));
-
-  // Projects
-  const projBody = el("div", { class: "chapter-content" });
-  PROJECTS.forEach((entry) => projBody.appendChild(entryDetails(entry)));
-  main.appendChild(chapter("projects", "projects", projBody));
-
-  // Education
-  const eduBody = el("div", { class: "chapter-content" });
-  EDUCATION.forEach((e) => {
-    const summary = entrySummary(e.period, t(e.degree), t(e.org));
-    const body = el("div", { class: "entry-body" });
-    if (e.location) body.appendChild(el("p", { class: "entry-location", text: cityName(e.location) }));
-    eduBody.appendChild(el("details", { class: "entry" }, [summary, body]));
-  });
-  main.appendChild(chapter("education", "education", eduBody));
-
-  // Teaching Experience
-  const teachingBody = el("div", { class: "chapter-content" });
-  TEACHING.forEach((entry) => teachingBody.appendChild(entryDetails(entry)));
-  main.appendChild(chapter("teaching", "teaching", teachingBody));
-
-  // Conferences
-  const confBody = el("div", { class: "chapter-content" });
-  confBody.appendChild(chapter("conf-intl", "international", citationList(CONFERENCES.international)));
-  confBody.appendChild(chapter("conf-dom", "domestic", citationList(CONFERENCES.domestic)));
-  confBody.appendChild(el("p", { class: "notes", text: UI[lang].notes }));
-  main.appendChild(chapter("conferences", "conferences", confBody));
-
-  // Awards
-  const awardsBody = el("div", { class: "chapter-content" });
-  AWARDS.forEach((entry) => awardsBody.appendChild(entryDetails(entry)));
-  main.appendChild(chapter("awards", "awards", awardsBody));
-
-  // Patents
-  main.appendChild(chapter("patents", "patents", patentList(PATENTS)));
-
-  // Publications
-  const pubBody = el("div", { class: "chapter-content" });
-  pubBody.appendChild(chapter("pub-intl", "intlJournal", citationList(PUBLICATIONS.intlJournal)));
-  pubBody.appendChild(chapter("pub-dom", "domJournal", citationList(PUBLICATIONS.domJournal)));
-  pubBody.appendChild(chapter("pub-wp", "workingPapers", citationList(PUBLICATIONS.workingPapers)));
-  pubBody.appendChild(el("p", { class: "notes", text: UI[lang].notes }));
-  main.appendChild(chapter("publications", "publications", pubBody));
-
-  // Services
-  main.appendChild(chapter("services", "services", el("ul", { class: "plain-list" }, SERVICES.map((s) => el("li", { text: t(s) })))));
-
-  renderNav();
-  setupScrollspy();
+  const sectionNav = document.getElementById("section-nav");
+  sectionNav.hidden = activeTab !== "cv";
+  if (activeTab === "cv") {
+    renderNav();
+    setupScrollspy();
+  } else if (sectionObserver) {
+    sectionObserver.disconnect();
+  }
 }
 
 document.querySelectorAll(".lang-option").forEach((btn) => {
@@ -229,7 +347,13 @@ document.querySelectorAll(".lang-option").forEach((btn) => {
   });
 });
 
+// Export PDF always exports the full CV tab, matching the single combined document this produced before tabs existed.
 document.getElementById("export-pdf").addEventListener("click", () => {
+  const previousTab = activeTab;
+  if (activeTab !== "cv") {
+    activeTab = "cv";
+    render();
+  }
   const openDetails = [...document.querySelectorAll("details:not([open])")];
   openDetails.forEach((d) => d.setAttribute("data-was-closed", ""));
   document.querySelectorAll("details").forEach((d) => (d.open = true));
@@ -241,6 +365,10 @@ document.getElementById("export-pdf").addEventListener("click", () => {
         d.open = false;
         d.removeAttribute("data-was-closed");
       });
+      if (activeTab !== previousTab) {
+        activeTab = previousTab;
+        render();
+      }
     },
     { once: true }
   );
