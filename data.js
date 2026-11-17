@@ -1,6 +1,6 @@
 // All CV content lives here. Add/edit entries and both UI languages update.
 // Bump this whenever content changes — it drives the "Last Update" footer line.
-const LAST_UPDATE = "2026-09-04";
+const LAST_UPDATE = "2026-11-17";
 
 const UI = {
   en: {
@@ -656,6 +656,7 @@ const AWARDS = [
 
 const PUBLICATIONS = {
   intlJournal: [
+    "NohYoon Seong, KiHwan Nam. (2026, forthcoming). “When communication becomes infrastructure: Signaling in ICO.” Information Technology for Development (f)",
     "JunKyu Jang, NohYoon Seong. (2023) “Deep reinforcement learning for stock portfolio optimization by connecting with modern portfolio theory.” Expert Systems with Applications, 218, 119556 (c)",
     "NohYoon Seong, KiHwan Nam. (2022) “Forecasting price movements of global financial indexes using complex quantitative financial networks.” Knowledge-Based Systems, 235, 107608 (f)",
     "NohYoon Seong. (2021). “Deep spatiotemporal attention network for fine particle matter 2.5 concentration prediction with causality analysis.” IEEE Access, 9, 73230–73239 (c, f)",
